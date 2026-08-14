@@ -1,0 +1,40 @@
+% 代数部分
+
+% 像空间
+\newcommand\Img[0]{
+    \mathrm{Img\,}
+}
+% 核：零空间
+\newcommand\Ker[0]{
+    \mathrm{Ker\,}
+}
+% 容：像空间的维数
+\newcommand\rang[0]{
+    \mathrm{rang\,}
+}
+% 佚：零空间的维数
+\newcommand\nul[0]{
+    \mathrm{null\,}
+}
+% 迹
+\newcommand\ji[0]{\operatorname{tr}}
+% 函数的限制：限制在定义域的某个子集中的函数
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }
+}
+% 随附矩阵、附阵、伴随矩阵
+\newcommand\co[0]{\operatorname{Co}}
+
+% 交换集：交换元构成的集合
+\newcommand\Cmu[1]{
+    \mathrm{Comm\,\left(#1\right)}
+}
+
+% 商结构：两个代数结构的商结构
+\newcommand\quotient[2]{
+    \mathop{\raisebox{0.65ex}{$#1$}$\mkern-5mu\diagup\mkern-7mu$\raisebox{-0.7ex}{$#2$}}
+}

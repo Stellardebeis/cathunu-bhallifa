@@ -12,6 +12,7 @@
 \usepackage{amssymb}
 \usepackage{dsfont}
 \usepackage{mathrsfs}
+% \usepackage[bb=boondox]{mathalfa}
 \usepackage{mathtools}
 \usepackage{polynom}
 \usepackage{xfrac}
@@ -111,10 +112,11 @@
 \renewcommand{\Pr}[1]{\mathbb{P}\left(#1\right)}
 \newcommand{\e}{\mathrm{e}}  % 自然底数
 \newcommand{\dash}{\,–}  % 短折号
-\newcommand{\hin}[2]{[\![#1,#2]\!]}  % 整数罗列集合 \hin{1}{n}：从1到n的整数
+\newcommand{\hin}[2]{[\![#1,#2]\!]}  % 连续整数罗列集合 \hin{1}{n}：从1到n的整数，前n个正整数，...
 \newcommand{\tong}[1]{\overset{#1}{\equiv\joinrel\equiv}}  % 同余等号
 \newcommand{\di}[1]{\,\mathrm{d}#1}  % 微元d
-\newcommand{\diff}{\,\mathscr{D}}  % 微元d
+% \newcommand{\diff}{\,\mathscr{D}}  % 微元d
+\newcommand{\diff}{\,\mathrm{d}}  % 微元d
 \newcommand{\qu}[2]{\displaystyle\left(#1;#2\right)}  % 开区间
 \newcommand{\kon}[2]{\overset{\circ}{U}\left(#1,\,#2\right)}  % 去心邻域
 % 局部展开 developpements limites
@@ -130,7 +132,8 @@
 \newcommand{\lian}[1]{  % 极限符号
     \underset{#1}{\operatorname{lian}\,}
 }
-\newcommand{\nji}[2]{\displaystyle\left( #1 \,|\, #2 \right)}  % 内积
+\newcommand{\jie}[3]{\displaystyle\left( \,#1 \,\middle\vert \,#2\,\middle\vert \,#3 \,\right)}  % 内积
+\newcommand{\nji}[2]{\displaystyle\left( \,#1 \,\middle\vert \,#2 \,\right)}  % 内积
 \newcommand{\supp}[1]{\underset{#1}{\text{\texttt{上}}}}  % 上确界
 \newcommand{\inff}[1]{\underset{#1}{\text{\texttt{下}}}}  % 下确界
 \newcommand{\maxx}[1]{\underset{#1}{\text{\texttt{大}}}}  % 最大值
@@ -225,6 +228,10 @@
 \newcommand{\subsectionext}[1]{%
   \subsection[#1\textsuperscript{*}]{#1\textsuperscript{*}}%
 }
+\newcommand{\jii}{\int\!\!\!\!\!\int}
+\newcommand{\jiil}{\mathop{\int\!\!\!\!\!\int}\limits}
+\newcommand{\jiii}{\int\!\!\!\!\!\int\!\!\!\!\!\int}
+\newcommand{\jiiil}{\mathop{\int\!\!\!\!\!\int\!\!\!\!\!\int}\limits}
 
 % 定义、定理、证明等块环境
 \theoremstyle{definition}

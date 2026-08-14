@@ -281,5 +281,7 @@ code/
 .continue/
 悟数学/*.rar
 src/高中数学/pics/**
+src/others
+src/others/**
 **/草稿*
 **/*test*
