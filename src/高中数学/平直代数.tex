@@ -3,20 +3,56 @@
 % 导入设定
 \input{../shared/settings}
 \input{../shared/settings-alg}
+% \usepackage{url}
 
 % 封面
-\title{\zihao{0} \bfseries 平直代数}
-\author{\zihao{2} \texttt{大青花鱼}}
+% --- 新增：定义作者和书名的变量，方便统一管理 ---
+\newcommand{\mytitle}{平直代数}
+\newcommand{\myauthor}{大青花鱼}
+% \title{\zihao{0} \bfseries 平直代数}
+% \author{\zihao{2} \texttt{大青花鱼}}
 % \date{\bfseries\today}
-\date{}
+% \date{}
 % 正文
 \begin{document}
-\maketitle
+% \maketitle
+% --- 版权页（扉页背面）开始 ---
+% ========== 第1页（右页，即扉页）==========
+\cleardoublepage                % 确保从右页（奇数页）开始
+\thispagestyle{empty}           % 本页无页码无页眉
+\begin{center}
+    \vspace*{2cm}               % 顶部留白
+    
+    % 书名
+    {\zihao{0} \bfseries \mytitle}
+    
+    \vspace{1cm}              % 书名与作者间距
+    
+    % 作者名
+    {\zihao{2} \texttt{\myauthor}}
+    
+    \vfill                      % 将后续所有内容推至页面底部
+    
+    % --- 分隔线（可选，增加精致感） ---
+    \rule{0.5\textwidth}{0.4pt} \\[0.5cm]
+    
+    % --- 版权声明（你要求的完整文字，保证显示） ---
+    {\scriptsize
+    \copyright\ 2026 \texttt{\myauthor} \\[0.2cm]
+    本作品采用 知识共享署名-相同方式共享 4.0 国际许可协议（CC BY-SA 4.0）进行许可。\\
+    协议全文详见：https://creativecommons.org/licenses/by-sa/4.0/ \\
+    您可以自由地共享、修改本作品，但须遵守“署名”和“相同方式共享”的条件。
+    }
+    
+    % \vspace{1.5cm}              % 底部留白，不贴边
+\end{center}
+\newpage   
+% ========== 扉页结束 ==========
+
 \tableofcontents
 \newpage
 
 \chapter{平直空间}
-% \label{sec:introduction}
 \section{平直空间的定义}
 这本书是关于“平直空间”的。什么是平直空间呢？
 让我们从“正比例关系”讲起。
