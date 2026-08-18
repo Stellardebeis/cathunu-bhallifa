@@ -2868,6 +2868,25 @@ $$\forall \,\, \mathbf{u} \,\, \in \,\, \Img T, \,\,\, T\mathbf{u} \in \,\, \Img
 所以，如果$\mathbb{V}$的某个子空间$\mathbb{U}$在$T$的作用下不变，
 那么它在$T$下的像是它自己的子空间。
 
+我们用一个具体的例子来感受不变子空间。考虑$\mathbb{R}^2$上的自同态$A$，它在标准基上的矩阵为：
+$$
+A = \begin{bmatrix} 4 & 3 \\ -2 & -1 \end{bmatrix}.
+$$
+考虑向量$\mathbf{u}_1 = (1,-1)$：
+$$
+A \mathbf{u}_1 = \begin{bmatrix} 4 & 3 \\ -2 & -1 \end{bmatrix}\begin{bmatrix} 1 \\ -1 \end{bmatrix} = \begin{bmatrix} 4-3 \\ -2+1 \end{bmatrix} = \begin{bmatrix} 1 \\ -1 \end{bmatrix} = \mathbf{u}_1.
+$$
+所以$A\mathbf{u}_1 = 1\cdot \mathbf{u}_1 \in \mathbb{R}\mathbf{u}_1$。
+由直性可知$A$把$\mathbb{R}\mathbf{u}_1$中任何向量仍映射到$\mathbb{R}\mathbf{u}_1$中。因此$\mathbb{R}\mathbf{u}_1$是$A$的不变子空间。
+
+再考虑子空间$\mathbf{u}_2 = (0,1)$：
+$$
+A \mathbf{u}_2 = \begin{bmatrix} 4 & 3 \\ -2 & -1 \end{bmatrix} \begin{bmatrix} 0 \\ 1 \end{bmatrix} = \begin{bmatrix} 3 \\ -1 \end{bmatrix}.
+$$
+向量$(3,-1)$不在$\mathbb{R}\mathbf{u}_2$中，所以$\mathbb{R}\mathbf{u}_2$不是$A$的不变子空间。
+
+可以看到，不是所有子空间都是给定自同态的不变子空间。寻找不变子空间，是约简自同态的第一步。
+
 \subsection{本征值和本征向量}
 直映射的不变子空间有什么性质呢？我们首先从1维的不变子空间开始研究。
 
@@ -2917,6 +2936,82 @@ $\lambda_1 \neq \lambda_2$，那么这两个向量必然直无关。它们对应
 一个本征值$\lambda$可以对应多个本征向量，甚至多个1维不变子空间，或者说维数大于1的不变子空间。
 考虑$\Ker (T - \lambda \mathrm{I})$，设其维数为$k$，则通过它的每一组基底，都可以产生$k$个1维不变子空间，
 其直和为$\Ker (T - \lambda \mathrm{I})$。
+
+我们来看具体的例子。仍然考虑$\mathbb{R}^2$上的自同态$A$，其矩阵为：
+$$
+A = \begin{bmatrix} 4 & 3 \\ -2 & -1 \end{bmatrix}.
+$$
+我们验证向量$\mathbf{u}_1 = (1,-1)$是否是本征向量。直接计算：
+$$
+A\mathbf{u}_1 = \begin{bmatrix} 4 & 3 \\ -2 & -1 \end{bmatrix}\begin{bmatrix} 1 \\ -1 \end{bmatrix} = \begin{bmatrix} 4-3 \\ -2+1 \end{bmatrix} = \begin{bmatrix} 1 \\ -1 \end{bmatrix} = 1 \cdot \mathbf{u}_1.
+$$
+$A$把$\mathbf{u}_1$映射为它自身的$1$倍。所以$\mathbf{u}_1$是$A$的本征向量，对应本征值$\lambda = 1$。
+
+再验证向量$\mathbf{u}_2 = (3,-2)$：
+$$
+A \mathbf{u}_2 = \begin{bmatrix} 4 & 3 \\ -2 & -1 \end{bmatrix} \begin{bmatrix} 3 \\ -2 \end{bmatrix} = \begin{bmatrix} 12-6 \\ -6+2 \end{bmatrix} = \begin{bmatrix} 6 \\ -4 \end{bmatrix} = 2 \cdot \mathbf{u}_2.
+$$
+$A$把$\mathbf{u}_2$映射为它自身的$2$倍。所以$\mathbf{u}_2$也是$A$的本征向量，对应本征值$\lambda = 2$。
+
+$A$有两个不同的本征值$1$和$2$，各自对应一个1维本征空间。
+两个本征向量$(1,-1)$和$(3,-2)$对应不同的本征值，按照命题\ref{pp:6_2}的结论，它们直无关，可以构成$\mathbb{R}^2$的基。
+
+再来看另一个自同态$B$，其矩阵为：
+$$
+B = \begin{bmatrix} 3 & -4 \\ 1 & -1 \end{bmatrix}.
+$$
+验证向量$\mathbf{v}=(2,1)$：
+$$
+B\mathbf{v} =  \begin{bmatrix} 3 & -4 \\ 1 & -1 \end{bmatrix}\begin{bmatrix} 2 \\ 1 \end{bmatrix} = \begin{bmatrix} 6-4 \\ 2-1 \end{bmatrix} = \begin{bmatrix} 2 \\ 1 \end{bmatrix} = 1 \cdot \mathbf{v}.
+$$
+所以$\mathbf{v}$是$B$的本征向量，对应本征值$\lambda = 1$。
+
+现在来看$B$关于本征值$1$的本征空间。按照定义，它是$\Ker(B - \mathrm{I})$。计算：
+$$
+B - \mathrm{I} = \begin{bmatrix} 2 & -4 \\ 1 & -2 \end{bmatrix}.
+$$
+解方程$(B - \mathrm{I})\mathbf{u} = \mathbf{0}$：
+$$
+\begin{bmatrix} 2 & -4 \\ 1 & -2 \end{bmatrix} \begin{bmatrix} u_1 \\ u_2 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}.
+$$
+两个方程分别是$2u_1 - 4u_2 = 0$和$u_1 - 2u_2 = 0$，它们是等价的。
+所以解得$u_1 = 2u_2$，本征空间为$\mathbb{R}\mathbf{v}$，维数为$1$。
+
+$B$还有没有$\mathbb{R}\mathbf{v}$以外的本征向量呢？假设有$\mathbb{R}\mathbf{v}$以外的非零向量$\mathbf{v}'=(v_1', v_2')$和对应的本征值$\lambda'$使得$B \mathbf{v}' = \lambda' \mathbf{v}'$，代入得到：
+\begin{align*}
+    \mathbf{0} &= B\mathbf{v}' - \lambda'\mathbf{v}' = (B - \lambda' \mathrm{I}_2)\mathbf{v}' \\
+    \begin{bmatrix} 0 \\ 0 \end{bmatrix} &=  \begin{bmatrix} 3 - \lambda' & -4 \\ 1 & -1 - \lambda' \end{bmatrix} \begin{bmatrix}
+       v_1'\\ v_2'
+    \end{bmatrix} =  \begin{bmatrix}
+       (3 - \lambda')v_1' - 4v_2' \\ v_1' - (1+\lambda')v_2'
+    \end{bmatrix}
+\end{align*}
+即：
+$$
+\left\{
+    \begin{aligned}
+        (3 - \lambda')v_1' = v_2' \\
+        v_1'= (1+\lambda')v_2' 
+    \end{aligned}
+\right.
+$$
+$\mathbf{v}'$是非零向量，所以$v_1', v_2'$不全为零。不妨设$v_2'\neq 0$，就得到
+\begin{align*}
+    v_2' &= (3 - \lambda')v_1' &= (3 - \lambda')(1+\lambda')v_2', \\
+    1 - (3 - \lambda')(1+\lambda') &= 0, \\
+    \lambda'^2 - 2\lambda' + 1 &= 0.
+\end{align*}
+解得$\lambda' = 1$。然而我们已经知道，以$1$为本征值的本征空间为$\mathbb{R}\mathbf{v}$，维数为$1$。
+
+这里出现了一个关键的区别：$A$有两个不同的本征值，对应两个1维本征空间，
+它们的直和恰好是整个$\mathbb{R}^2$。
+而$B$虽然也有本征值，但本征空间只有1维，无法铺满2维的$\mathbb{R}^2$。
+也就是说，$B$没有足够多的直无关的本征向量来构成空间的基底。
+这个差别，将决定两个自同态能否对角化。
+
+后面我们会学到系统的方法来寻找自同态的所有本征值。
+不过现在，通过直接计算$T\mathbf{u}$并观察它是否是$\mathbf{u}$的标量倍，
+我们已经可以验证本征值和本征向量了。
 
 \subsection{对角矩阵和对角化}
 1维不变子空间性质良好，而如果能够把这种良好性质“推广”到整个空间，我们就可以轻松了解整个自同态的结构。
@@ -2970,12 +3065,99 @@ $$ T(\mathbf{e}_1) = \lambda_1 \mathbf{e}_1, T(\mathbf{e}_2) = \lambda_2 \mathbf
 
 所以，如果我们找到了$n$个两两不同的本征值，把它们对应的本征向量组成基底，自同态$T$在这组基底上就是对角矩阵。
 
+我们用一个完整的例子来展示对角化的过程。
+仍然考虑自同态$A$，其矩阵为：
+$$
+A = \begin{bmatrix} 4 & 3 \\ -2 & -1 \end{bmatrix}.
+$$
+前面我们已经验证，$A$有两个本征值$\lambda_1 = 1$和$\lambda_2 = 2$，
+对应的本征向量分别是$\mathbf{e}_1 = (1,-1)$和$\mathbf{e}_2 = (3,-2)$。
+它们对应不同的本征值，所以直无关，构成$\mathbb{R}^2$的一组基$\mathcal{B} = (\mathbf{e}_1, \mathbf{e}_2)$。
+
+在这组基上，$A$的矩阵为：
+$$
+[A]_{\mathcal{B}} = \begin{bmatrix} 1 & 0 \\ 0 & 2 \end{bmatrix}.
+$$
+这是因为$A\mathbf{e}_1 = 1\cdot\mathbf{e}_1 + 0\cdot\mathbf{e}_2$，$A\mathbf{e}_2 = 0\cdot\mathbf{e}_1 + 2\cdot\mathbf{e}_2$。
+$A$在基底$\mathcal{B}$上是对角矩阵，所以$A$可对角化。
+
+对角化带来什么好处呢？比如，我们要计算$A$的乘幂$A^k$。
+在基底$\mathcal{B}$上，$A^k$的矩阵就是：
+$$
+[A^k]_{\mathcal{B}} = \begin{bmatrix} 1^k & 0 \\ 0 & 2^k \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 2^k \end{bmatrix}.
+$$
+也就是说，$A^k\mathbf{e}_1 = \mathbf{e}_1$，$A^k\mathbf{e}_2 = 2^k\mathbf{e}_2$。
+对任意向量$\mathbf{u} = a\mathbf{e}_1 + b\mathbf{e}_2$，有：
+$$
+A^k\mathbf{u} = a\mathbf{e}_1 + 2^k b\mathbf{e}_2.
+$$
+乘幂的计算变得十分简单。
+
+反过来，我们来看$B$为什么不能对角化。
+$B$的唯一本征值是$\lambda = 1$，本征空间$\Ker(B - \mathrm{I}) = \mathbb{R} (2,1)$只有$1$维。
+因此，不存在由本征向量构成的基底。所以$B$不能对角化。
+
+最后看一个$3$维的例子。考虑$\mathbb{R}^3$上的自同态$C$，其矩阵为：
+$$
+C = \begin{bmatrix} 5 & 0 & 1 \\ 1 & 3 & 2 \\ 0 & 0 & 3 \end{bmatrix}.
+$$
+我们可以直接验证：
+$$
+C \begin{bmatrix} 2 \\ 1 \\ 0 \end{bmatrix} = \begin{bmatrix} 10 \\ 5 \\ 0 \end{bmatrix} = 5 \cdot \begin{bmatrix} 2 \\ 1 \\ 0 \end{bmatrix},
+\qquad
+C \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} = \begin{bmatrix} 0 \\ 3 \\ 0 \end{bmatrix} = 3 \cdot \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}.
+$$
+所以$(2,1,0)$是$C$关于本征值$5$的本征向量，$(0,1,0)$是$C$关于本征值$3$的本征向量。
+
+反之，考虑$C\mathbf{v} = \lambda \mathbf{v}$。如前展开得到：
+\begin{align*}
+    \mathbf{0} &= C\mathbf{v} - \lambda\mathbf{v} = (C - \lambda \mathrm{I}_3)\mathbf{v} \\
+    \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix} &=  \begin{bmatrix} 5- \lambda & 0 & 1 \\ 1 & 3- \lambda & 2 \\ 0 & 0 & 3- \lambda \end{bmatrix} \begin{bmatrix}
+       v_1\\ v_2 \\ v_3
+    \end{bmatrix} =  \begin{bmatrix}
+       (5 - \lambda)v_1 +v_3 \\ v_1 + (3 - \lambda)v_2 + 2v_3 \\ (3 - \lambda)v_3
+    \end{bmatrix}
+\end{align*}
+即：
+$$
+\left\{
+    \begin{aligned}
+        (5 - \lambda)v_1 + v_3 = 0 \\
+        v_1 + (3 - \lambda)v_2 + 2v_3 = 0 \\
+        (3 - \lambda)v_3 = 0
+    \end{aligned}
+\right.
+$$
+首先考虑$\lambda = 3$的情况。这时第三个方程变为$0 = 0$。前两个方程变为
+$$
+\left\{
+    \begin{aligned}
+        2v_1 + v_3 = 0 \\
+        v_1  + 2v_3 = 0 
+    \end{aligned}
+\right.
+$$
+解得$v_1 = v_3 = 0$。于是$\mathbf{v} \in \mathbb{R}(0,1,0)$。这说明本征值$3$对应的本征空间就是一维空间$\mathbb{R}(0,1,0)$。
+
+再考虑$\lambda\neq 3$的情况。这时第三个方程解出$v_3 = 0$。代入前两个方程得到
+$$
+\left\{
+    \begin{aligned}
+        (5 - \lambda)v_1 = 0 \\
+        v_1 + (3 - \lambda)v_2 = 0 
+    \end{aligned}
+\right.
+$$
+第一个方程解得$\lambda = 5$或$v_1 = 0$。如果$\lambda = 5$，那么解得$v_1 -2 v_2=0 $，得到本征值$5$对应的一维本征空间$\mathbb{R}(2,1,0)$。如果$v_1 = 0$，那么解得$v_2 = 0$，$\mathbf{v}$为零向量，排除。
+
+综上，我们知道$C$只有两个本征值$3,5$分别对应$1$维的本征空间$\mathbb{R}(2,1,0)$和$\mathbb{R}(0,1,0)$.和$B$一样，它的本征向量无法构成$\mathbb{R}^3$的基底，于是无法对角化。
+
 \section{自同态与整式}
 
 \subsection{极小归零式}
 
-上一节我们讨论了不变子空间是1维空间的情形。1维不变子空间总对应一个本征值，其中的非零向量都是本征向量。
-现在我们来研究维数大于1的不变子空间。为此，我们要从自同态的整式开始着手。
+上一节我们讨论了不变子空间是$1$维空间的情形。$1$维不变子空间总对应一个本征值，其中的非零向量都是本征向量。
+现在我们来研究维数大于$1$的不变子空间。为此，我们要从自同态的整式开始着手。
 
 设$T\in\mathcal{L}(\mathbb{V})$，考虑$T$与自身的复合得到的自同态、它们之间的加法与数乘运算，我们会发现：
 每个以$\mathbb{F}$中元素为系数的一元整式$p(z) = a_0 + a_1 z + \cdots + a_m z^m$，都可以对应一个由$T$衍生出的映射：
@@ -3001,7 +3183,7 @@ $$a_0 \mathrm{I} + a_1 T + \cdots + a_m T^m = 0.$$
     \item 如果$\lambda \in \mathbb{F}, \,\, p \in \mathfrak{G}(T)$，那么$\lambda p \in \mathfrak{G}(T).$
     \item 如果$p \in \mathfrak{G}(T), q \in \mathbb{F}[z]$，那么$pq \in \mathfrak{G}(T).$
 \end{enumerate}
-这说明$\mathfrak{G}(T)$是整式环$\mathbb{F}[z]$的藏\footnote{见定义\ref{df:0_3_4}.}。$\mathbb{F}[z]$是单藏环，所以$\mathfrak{G}(T)$是单藏\footnote{参见命题\ref{pp:0_3_5}。}，即由某个首一整式生成：$\mathfrak{G}(T) = \langle m_T \rangle$。在首一的要求下，这个整式是唯一的。我们称其为$T$的\textbf{极小归零式}，简称\textbf{极小式}，$\mathfrak{G}(T)$中所有元素的都是它的倍式。
+这说明$\mathfrak{G}(T)$是整式环$\mathbb{F}[z]$的藏\footnote{见定义\ref{df:0_3_4}.}。$\mathbb{F}[z]$是单藏环，所以$\mathfrak{G}(T)$是单藏\footnote{关于单藏环的定义与性质，参见命题\ref{pp:0_3_5}。}，即由某个首一整式生成：$\mathfrak{G}(T) = \langle m_T \rangle$。在首一的要求下，这个整式是唯一的。我们称其为$T$的\textbf{极小归零式}，简称\textbf{极小式}，$\mathfrak{G}(T)$中所有元素的都是它的倍式。
 
 作为例子，我们来看对角矩阵对应的直映射的极小归零式。
 设对角矩阵$T$的对角线上元素为$\lambda_1, \cdots , \lambda_n$，
@@ -3025,10 +3207,108 @@ $$ \forall \mathbf{u} \in \mathbb{V}, \,\,\, \mathbf{u} = \sum_{i=1}^n u_i \math
 如果$T$的本征值两两不等，那么极小归零式是$n$次整式。
 如果其中有相等的，那么极小归零式的次数小于$n$。
 
-$m_T$叫做$T$的\textbf{极小归零式}，我们把它的次数记为$d_T$。对任意整式$p\in\mathbb{F}[z]$，
+我们把$m_T$的次数记为$d_T$。对任意整式$p\in\mathbb{F}[z]$，
 它对$m_T$的带余除法得到：
 $$p = m_T q + r,$$
 则$p(T) = q(T)m_T(T) + r(T) = r(T)$。也就是说，所有$T$构成的整式的值都等于次数小于$d_T$的整式，于是可以表示为$\mathcal{B} = (\mathrm{I}, T, \cdots , T^{d_T - 1})$的直组合，这说明$\mathrm{I}, T, \cdots , T^{d_T - 1}$生成$\mathbb{F}[T]$。
+
+我们来看上一节中三个自同态的极小归零式。
+首先考虑自同态$A$，其矩阵为：
+$$
+A = \begin{bmatrix} 4 & 3 \\ -2 & -1 \end{bmatrix}.
+$$
+第一节中我们已经验证，$A$有本征值$1$和$2$。考虑整式$p(z) = (z-1)(z-2) = z^2 - 3z + 2$。
+我们验证$p(A)$是否为零映射。首先计算$A^2$：
+$$
+A^2 = \begin{bmatrix} 4 & 3 \\ -2 & -1 \end{bmatrix}\begin{bmatrix} 4 & 3 \\ -2 & -1 \end{bmatrix} = \begin{bmatrix} 16-6 & 12-3 \\ -8+2 & -6+1 \end{bmatrix} = \begin{bmatrix} 10 & 9 \\ -6 & -5 \end{bmatrix}.
+$$
+于是：
+$$
+p(A) = A^2 - 3A + 2\mathrm{I} = \begin{bmatrix} 10 & 9 \\ -6 & -5 \end{bmatrix} - \begin{bmatrix} 12 & 9 \\ -6 & -3 \end{bmatrix} + \begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix} = \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}.
+$$
+所以$p(z) = z^2 - 3z + 2$是$A$的归零式。
+
+它是否是极小归零式呢？$p$的次数为$2$。一次归零式意味着$A = \lambda\mathrm{I}$，即$A$是缩放映射。
+但$A$显然不是缩放映射（$A\mathbf{e}_1 = \mathbf{e}_1$而$A\mathbf{e}_2 = 2\mathbf{e}_2$，两个本征值不等），
+所以一次归零式不存在。因此$A$的极小归零式为：
+$$
+m_A(z) = (z-1)(z-2) = z^2 - 3z + 2.
+$$
+
+再考虑自同态$B$，其矩阵为：
+$$
+B = \begin{bmatrix} 3 & -4 \\ 1 & -1 \end{bmatrix}.
+$$
+第一节中我们验证了$B$的唯一本征值为$1$，本征空间为$\mathbb{R}(2,1)$。
+考虑整式$q(z) = (z-1)^2 = z^2 - 2z + 1$。首先计算$B^2$：
+$$
+B^2 = \begin{bmatrix} 3 & -4 \\ 1 & -1 \end{bmatrix}\begin{bmatrix} 3 & -4 \\ 1 & -1 \end{bmatrix} = \begin{bmatrix} 9-4 & -12+4 \\ 3-1 & -4+1 \end{bmatrix} = \begin{bmatrix} 5 & -8 \\ 2 & -3 \end{bmatrix}.
+$$
+于是：
+$$
+q(B) = B^2 - 2B + \mathrm{I} = \begin{bmatrix} 5 & -8 \\ 2 & -3 \end{bmatrix} - \begin{bmatrix} 6 & -8 \\ 2 & -2 \end{bmatrix} + \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}.
+$$
+所以$q(z) = (z-1)^2$是$B$的归零式。
+
+显然$B$也没有一次归零式。因此$B$的极小归零式为：
+$$
+m_B(z) = (z-1)^2 = z^2 - 2z + 1.
+$$
+
+最后考虑自同态$C$，其矩阵为：
+$$
+C = \begin{bmatrix} 5 & 0 & 1 \\ 1 & 3 & 2 \\ 0 & 0 & 3 \end{bmatrix}.
+$$
+第一节中我们验证了$C$有本征值$5$和$3$，对应的本征空间都只有$1$维。
+首先验证$(z-3)(z-5)$是否是归零式。计算：
+$$
+C - 3\mathrm{I} = \begin{bmatrix} 2 & 0 & 1 \\ 1 & 0 & 2 \\ 0 & 0 & 0 \end{bmatrix}, \quad C - 5\mathrm{I} = \begin{bmatrix} 0 & 0 & 1 \\ 1 & -2 & 2 \\ 0 & 0 & -2 \end{bmatrix}.
+$$
+它们的乘积为：
+$$
+(C-3\mathrm{I})(C-5\mathrm{I}) = \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & -3 \\ 0 & 0 & 0 \end{bmatrix} \neq \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}.
+$$
+所以$(z-3)(z-5)$不是$C$的归零式。
+
+再试$(z-3)^2(z-5)$。先计算$(C-3\mathrm{I})^2$：
+$$
+(C-3\mathrm{I})^2 = \begin{bmatrix} 2 & 0 & 1 \\ 1 & 0 & 2 \\ 0 & 0 & 0 \end{bmatrix}^2 = \begin{bmatrix} 4 & 0 & 2 \\ 2 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}.
+$$
+于是：
+$$
+(C-3\mathrm{I})^2(C-5\mathrm{I}) = \begin{bmatrix} 4 & 0 & 2 \\ 2 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}\begin{bmatrix} 0 & 0 & 1 \\ 1 & -2 & 2 \\ 0 & 0 & -2 \end{bmatrix} = \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}.
+$$
+所以$(z-3)^2(z-5)$是$C$的归零式。
+
+能否找到更低次的归零式呢？
+一次归零式要求$C = \lambda\mathrm{I}$，显然不成立。二次归零式呢？我们假设有首一的二次多项式$p$使得$p(C) $为零矩阵，那么，用$p$除$(z-3)^2(z-5)$，余式$r$至多是一次式。按定义有：
+$$ 0 = (C-3\mathrm{I})^2(C-5\mathrm{I}) + p(C)q(C) + r(C) = r(C).$$
+于是$r(C) = 0$。这说明$r$只能是$0$。于是$p$是$(z-3)^2(z-5)$的因式。也就是说，$p$只能是$(z-3)^2$或$(z-3)(z-5)$。
+$(z-3)(z-5)$已经排除。而$(z-3)^2$也不成立，因为只要把本征值$5$对应的任何本征向量$\mathbf{u}$代入就得到：
+$$ 
+(C - 3\mathrm{I})^2\mathbf{u} = (C - 3\mathrm{I})(C\mathbf{u} - 3\mathbf{u}) = (C - 3\mathrm{I})(2\mathbf{u}) = 2(C\mathbf{u} - 3\mathbf{u}) = 4\mathbf{u} \neq \mathbf{0}.
+$$
+于是$C$的极小归零式为：
+$$
+m_C(z) = (z-3)^2(z-5).
+$$
+
+将三个极小归零式对比：
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+ & $A$ & $B$ & $C$ \\
+\hline
+极小归零式 & $(z-1)(z-2)$ & \phantom{.2)}$(z-1)^2$\phantom{.2)} & $(z-3)^2(z-5)$ \\
+次数 & $2$ & $2$ & $3$ \\
+重根 & 无 & 有 & 有 \\
+\hline
+\end{tabular}
+\end{center}
+
+回忆第一节中的结论：$A$可对角化，$B$和$C$不可对角化。
+这里我们看到，可对角化的$A$的极小归零式没有重根，
+而不可对角化的$B$和$C$的极小归零式都有重根。这并非巧合。
 
 另一方面，如果$\mathrm{I}, T, \cdots , T^{d_T - 1}$的直组合等于零映射，那么其系数就对应了一个次数小于$d_T$的归零式。根据$m_T$的定义，该整式为零，因此所有系数为零。于是$\mathrm{I}, T , \cdots , T^{d_T - 1}$直无关。
 
@@ -3058,6 +3338,16 @@ $$p = m_T q + r,$$
 
 \end{proof}
 
+我们用第一节中的三个自同态来验证。对$A$来说，$m_A(z) = (z-1)(z-2)$，根为$1$和$2$。
+第一节中我们已经验证，$1$和$2$确实是$A$的本征值。
+
+对$B$来说，$m_B(z) = (z-1)^2$，唯一的根为$1$。第一节中我们已经验证，$1$确实是$B$的唯一本征值。
+
+对$C$来说，$m_C(z) = (z-3)^2(z-5)$，根为$3$和$5$。第一节中我们已经验证，$3$和$5$确实是$C$的本征值。
+
+反过来，我们也可以利用这个命题来排除不是本征值的数。
+比如，$0$不是$m_A$的根（$m_A(0) = 2 \neq 0$），所以$0$不是$A$的本征值。
+同理，$4$不是$m_B$的根（$m_B(4) = 9 \neq 0$），所以$4$不是$B$的本征值。
 
 自同态的整式可以作为研究不变子空间的切入点。首先，对任意非零整式$P$，
 考虑$P(T)$的零空间$\Ker P(T)$。$\forall \,\, \mathbf{u} \,\, \in \Ker P(T)$，有：
@@ -3083,7 +3373,7 @@ $$m_{T,\mathbb{W}}(\restr{T}{\mathbb{U}})(\mathbf{u}) = m_{T,\mathbb{W}}(\restr{
 那么$T$限制在每个子空间中的映射对应的极小归零式，都是$m_T$的因式。也就是说，$m_T$是它们的公倍式。
 按照$m_T$的定义，$m_T$是它们的最小公倍式。
 
-\begin{pp}（\textbf{零空间引理}）\label{pp:6_4}
+\begin{pp}\textbf{零空间引理}\label{pp:6_4}
     设$T$为空间$\mathbb{V}$的自同态，整式$P\in\mathbb{F}[z]$可分解为若干个两两互素的整式的乘积：
     $$ P = P_1 P_2\cdots P_k$$
     那么
@@ -3111,6 +3401,63 @@ $$m_{T,\mathbb{W}}(\restr{T}{\mathbb{U}})(\mathbf{u}) = m_{T,\mathbb{W}}(\restr{
     
 \end{proof}
 
+我们用自同态$C$来具体感受一下零空间引理。
+$C$的极小归零式为$m_C(z) = (z-3)^2(z-5)$。
+其中$(z-3)^2$和$(z-5)$互素。按照零空间引理：
+$$
+\mathbb{R}^3 = \Ker (C-3\mathrm{I})^2 \oplus \Ker (C-5\mathrm{I}).
+$$
+我们来验证这一点。
+
+首先计算$\Ker(C-5\mathrm{I})$。第一节中我们已经知道，
+$C-5\mathrm{I}$的零空间由$(2,1,0)$生成，维数为$1$。
+
+再计算$\Ker(C-3\mathrm{I})^2$。前面已经算出：
+$$
+(C-3\mathrm{I})^2 = \begin{bmatrix} 4 & 0 & 2 \\ 2 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}.
+$$
+解方程$(C-3\mathrm{I})^2\mathbf{u} = \mathbf{0}$：
+$$
+\begin{bmatrix} 4 & 0 & 2 \\ 2 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}\begin{bmatrix} u_1 \\ u_2 \\ u_3 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix}.
+$$
+两个方程分别是$4u_1 + 2u_3 = 0$和$2u_1 + u_3 = 0$，它们等价。
+解得$u_3 = -2u_1$，$u_2$自由。所以$\Ker(C-3\mathrm{I})^2$的维数为$2$，
+一组基为$(1,0,-2)$和$(0,1,0)$。
+
+验证直和：$\Ker(C-3\mathrm{I})^2$维数为$2$，$\Ker(C-5\mathrm{I})$维数为$1$，
+两者维数之和为$3 = \dim \mathbb{R}^3$。
+只需验证交集为$\{\mathbf{0}\}$。设$\mathbf{u} \in \Ker(C-3\mathrm{I})^2 \cap \Ker(C-5\mathrm{I})$，
+则$\mathbf{u} = a(2,1,0)$且$4a + 2\cdot 0 = 0$（代入$(C-3\mathrm{I})^2$的第一个方程），解得$a = 0$。
+所以交集确实为$\{\mathbf{0}\}$。
+
+于是$\mathbb{R}^3 = \Ker(C-3\mathrm{I})^2 \oplus \Ker(C-5\mathrm{I})$，
+两个子空间都是$C$-不变子空间。
+在$\Ker(C-5\mathrm{I})$中，$C$的作用是乘以$5$；
+在$\Ker(C-3\mathrm{I})^2$中，$C$的作用更复杂，不是简单的缩放。
+取$\Ker(C-3\mathrm{I})^2$的基$(0,1,0)$和$(1,0,-2)$，计算：
+$$
+C\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} = \begin{bmatrix} 0 \\ 3 \\ 0 \end{bmatrix} = 3\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix},
+\quad
+C\begin{bmatrix} 1 \\ 0 \\ -2 \end{bmatrix} = \begin{bmatrix} 3 \\ -3 \\ -6 \end{bmatrix}.
+$$
+验证$(3,-3,-6)$是否在$\Ker(C-3\mathrm{I})^2$中：
+$4\cdot 3 + 2\cdot(-6) = 0$，确实在其中。
+将它用基$(0,1,0)$和$(1,0,-2)$表示：
+$(3,-3,-6) = -3(0,1,0) + 3(1,0,-2)$。
+所以$C$限制在$\Ker(C-3\mathrm{I})^2$上，在基$((0,1,0),(1,0,-2))$上的矩阵为：
+$$
+\begin{bmatrix} 3 & -3 \\ 0 & 3 \end{bmatrix}.
+$$
+这不是对角矩阵。$C$在$\Ker(C-3\mathrm{I})^2$上的限制不能对角化。
+这和$B$的情形类似：本征值$3$的极小归零式含有重根$(z-3)^2$，
+对应的不变子空间内部无法进一步分解为$1$维不变子空间的直和。
+
+综合以上，如果我们取$\mathbb{R}^3$的基底为$((0,1,0),\, (1,0,-2),\, (2,1,0))$，
+则$C$在这组基上的矩阵为：
+$$
+\begin{bmatrix} 3 & -3 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & 5 \end{bmatrix}.
+$$
+我们可以把这样的矩阵叫做\textbf{分块对角矩阵}\footnote{也称为准对角矩阵。}。左上角的$2\times 2$块对应$\Ker(C-3\mathrm{I})^2$，右下角的$1\times 1$块对应$\Ker(C-5\mathrm{I})$。
 
 根据零空间引理，只要$P\in\mathfrak{G}(T)$，那么我们就可以根据$P$的素因式分解，
 把空间$\mathbb{V}$分解为若干个$T$-不变子空间的直和。
@@ -3118,8 +3465,28 @@ $$ \mathbb{V} = \Ker P_1(T) \oplus \Ker P_2(T) \oplus \cdots \oplus \Ker P_k(T).
 在每个$T$-不变子空间$\Ker P_i(T)$中找一组基：$(\mathbf{e}_{i,1}, \mathbf{e}_{i,2}, \cdots , \mathbf{e}_{i, d_i})$.
 那么$k$组子空间的基可以拼成空间$\mathbb{V}$的一组基。
 $$ \mathcal{B} = (\mathbf{e}_{1,1}, \cdots , \mathbf{e}_{1, d_1},\mathbf{e}_{2,1}, \cdots , \mathbf{e}_{2, d_2}, \cdots , \mathbf{e}_{k,1}, \cdots , \mathbf{e}_{k, d_k})$$
-$T$在这组基上的矩阵是分块对角矩阵\footnote{也称为准对角矩阵。}：
-$$ [T]_{\mathcal{B}} = \begin{bmatrix} A_1 & 0 & \cdots & 0 \\ 0 & A_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & \cdots & 0 & A_k\end{bmatrix}$$
+$T$在这组基上的矩阵是分块对角矩阵：
+$$ [T]_{\mathcal{B}} = \begin{bmatrix} A_1 & 0 & \cdots & 0 \\ 0 & A_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & A_k\end{bmatrix}$$
+
+对$A$来说，$m_A(z) = (z-1)(z-2)$，两个因式$z-1$和$z-2$互素。零空间引理给出：
+$$
+\mathbb{R}^2 = \Ker(A-\mathrm{I}) \oplus \Ker(A-2\mathrm{I}).
+$$
+第一节中我们已经知道，$\Ker(A-\mathrm{I}) = \mathbb{R}(1,-1)$，$\Ker(A-2\mathrm{I}) = \mathbb{R}(3,-2)$。
+在每个$1$维不变子空间中，$A$的作用就是乘以对应的本征值。
+取基底$((1,-1),\, (3,-2))$，$A$在其上的矩阵为：
+$$
+\begin{bmatrix} 1 & 0 \\ 0 & 2 \end{bmatrix}.
+$$
+这正是对角矩阵。
+
+对$B$来说，$m_B(z) = (z-1)^2$只有一个素因式$z-1$。
+零空间引理在这里不能将空间进一步分解。
+$\Ker(B-\mathrm{I})^2 = \mathbb{R}^2$是整个空间，无法拆分为更小的不变子空间的直和。
+这和$B$不可对角化是一致的。
+
+可以看到，极小归零式的因式分解决定了空间能分解为多少个不变子空间的直和，
+而每个因式是否有重根，则决定了对应的不变子空间内部能否继续对角化。
 
 \section{自同态的约简}
 \subsection{三角矩阵和三角化}
@@ -3142,7 +3509,7 @@ $$ [T]_{\mathcal{B}} = \begin{bmatrix} A_1 & 0 & \cdots & 0 \\ 0 & A_2 & \cdots 
 $$ \begin{bmatrix} 2 & 0 & 4 & 9 \\ 0 & 7 & -1 & 3 \\ 0 & 0 & 1 & 6 \\ 0 & 0 & 0 & 1\end{bmatrix}$$
 它第2行第1列、第3行第2列等位置（所有行数比列数大的位置）上的系数都是0。而下面这个矩阵是下三角矩阵。
 $$ \begin{bmatrix} 3 & 0 & 0 & 0 \\ 0 & 7 & 0 & 0 \\ 5 & 4 & 1 & 0 \\ -4 & 2 & 0 & 1\end{bmatrix}$$
-    它第1行第3列、第2行第4列等位置（所有行数比列数小的位置）上的系数都是0。
+它第1行第3列、第2行第4列等位置（所有行数比列数小的位置）上的系数都是0。
 
 显然，上三角矩阵的转置矩阵是下三角矩阵，反之亦然。
 所有的上三角矩阵关于矩阵加法和数乘运算构成平直空间，维数为$\frac12 n(n+1)$。
@@ -3168,13 +3535,55 @@ $$ \begin{bmatrix} 3 & 0 & 0 & 0 \\ 0 & 7 & 0 & 0 \\ 5 & 4 & 1 & 0 \\ -4 & 2 & 0
     
 \end{proof}
 
-
 我们称一组这样的基为关于$T$的\textbf{三角基}，称把$T$用上三角矩阵表示为\textbf{三角化}，
 将可以在某组基上表达为上三角矩阵的自同态称为\textbf{可三角化自同态}。
 如果某个矩阵对应一个可三角化自同态，就称它为\textbf{可三角化矩阵}。
 矩阵是可三角化矩阵，表示它和某个上三角矩阵是相似矩阵。
 
 可三角化自同态对应着上三角矩阵，对应着一组嵌套的不变子空间：$\mathbb{E}_1 \subseteq \mathbb{E}_2 \subseteq \cdots \subseteq \mathbb{E}_n$.
+
+我们用第一节的自同态来具体感受三角化的过程。$A$可以对角化，从而可以三角化。
+$B$的矩阵为：
+$$
+B = \begin{bmatrix} 3 & -4 \\ 1 & -1 \end{bmatrix}.
+$$
+第一节中我们已经验证，$B$的唯一本征值为$1$，对应的本征向量为$\mathbf{e}_1 = (2,1)$。
+也就是说，$B\mathbf{e}_1 = 1 \cdot \mathbf{e}_1$。
+所以$1$维子空间$\mathbb{R} \mathbf{e}_1$是$B$-不变子空间。
+
+要三角化$B$，按命题\ref{pp:6_5}，我们需要找一组基$(\mathbf{e}_1, \mathbf{e}_2)$，
+使得$\langle \mathbf{e}_1 \rangle \subseteq \langle \mathbf{e}_1, \mathbf{e}_2 \rangle = \mathbb{R}^2$都是$B$-不变子空间。
+第一个条件已经满足。第二个条件自动满足（整个空间总是不变子空间）。
+所以，只需取任何与$\mathbf{e}_1$直无关的向量作为$\mathbf{e}_2$即可。
+
+取$\mathbf{e}_2 = (1, 0)$。计算$B\mathbf{e}_2$：
+$$
+B\mathbf{e}_2 = \begin{bmatrix} 3 & -4 \\ 1 & -1 \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} = \begin{bmatrix} 3 \\ 1 \end{bmatrix} = 1 \cdot \mathbf{e}_1 + 1 \cdot \mathbf{e}_2.
+$$
+综合两个结果：
+$$
+B\mathbf{e}_1 = 1 \cdot \mathbf{e}_1 + 0 \cdot \mathbf{e}_2, \quad B\mathbf{e}_2 = 1 \cdot \mathbf{e}_1 + 1 \cdot \mathbf{e}_2.
+$$
+因此，$B$在基底$(\mathbf{e}_1, \mathbf{e}_2) = ((2,1), (1,0))$上的矩阵为：
+$$
+[B]_{\mathcal{B}} = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}.
+$$
+这是一个上三角矩阵。$B$被三角化了。
+
+注意这个上三角矩阵不是对角矩阵。对角线上两个元素都是$1$（本征值），
+但第$1$行第$2$列有一个非零元素$1$。这个非零元素反映了$B$不可对角化的事实：
+$B$只有一个$1$维的本征空间，无法找到由本征向量构成的基底。
+
+再来看$3$维的例子，对于第一节提到的自同态$C$，矩阵为：
+$$
+C = \begin{bmatrix} 5 & 0 & 1 \\ 1 & 3 & 2 \\ 0 & 0 & 3 \end{bmatrix}.
+$$
+上一节中我们算得：取$\mathbb{R}^3$的基底为$((0,1,0),\, (1,0,-2),\, (2,1,0))$，
+则$C$在这组基上的矩阵为：
+$$
+\begin{bmatrix} 3 & -3 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & 5 \end{bmatrix}.
+$$
+这是一个上三角矩阵，$C$被上三角化了。我们的处理方式是针对不同的本征值分别处理。$(2,1,0)$对应一维本征空间。$(0,1,0),\, (1,0,-2)$将本征值$3$对应的空间三角化。这也让我们看到：如果分块对角矩阵的每一对角块都是上（下）三角矩阵，那么整个矩阵也会是上（下）三角矩阵。
 
 \subsection{上三角矩阵的性质}
 如果某个直自同态$T$在某个基底上可以表示为上三角矩阵，
@@ -3226,6 +3635,31 @@ $$ \begin{bmatrix} 3 & 0 & 0 & 0 \\ 0 & 7 & 0 & 0 \\ 5 & 4 & 1 & 0 \\ -4 & 2 & 0
 
 \end{proof}
 
+我们用前面三角化的结果来验证这两个命题。
+
+对$B$来说，三角化后的矩阵为：
+$$
+[B]_{\mathcal{B}} = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}.
+$$
+对角线元素为$1, 1$。按命题\ref{pp:6_7}，$B$的本征值集合就是$\{1\}$。
+这与我们第一节中直接计算的结果一致。
+对角线元素都不为$0$，按命题\ref{pp:6_6}，$B$是可逆映射。
+验证：$\det B = 3 \times (-1) - (-4) \times 1 = 1 \neq 0$，确实可逆。
+
+对$C$来说，三角化后的矩阵为：
+$$
+[C]_{\mathcal{B}} = \begin{bmatrix} 3 & -3 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & 5 \end{bmatrix}.
+$$
+对角线元素为$3, 3, 5$。按命题\ref{pp:6_7}，$C$的本征值集合就是$\{3, 5\}$。
+这也与第一节中的结果一致。注意$3$在对角线上出现了两次，
+对应本征值$3$的全重数为$2$。
+
+对$A$来说，第一节中我们已经将它对角化。
+在基底$((1,-1), (3,-2))$上，$A$的矩阵为：
+$$
+[A]_{\mathcal{B}} = \begin{bmatrix} 1 & 0 \\ 0 & 2 \end{bmatrix}.
+$$
+对角矩阵是上三角矩阵的特殊情况。对角线元素$1, 2$就是$A$的本征值。
 
 可以看到，可三角化的自同态，和可对角化的自同态一样，其本征值和对角元素挂钩。
 
@@ -3255,11 +3689,32 @@ $$ \begin{bmatrix} 3 & 0 & 0 & 0 \\ 0 & 7 & 0 & 0 \\ 5 & 4 & 1 & 0 \\ -4 & 2 & 0
     那么，对任意$1\leqslant i \leqslant n$，$(T - a_{ii}\mathrm{I})(\mathbf{e}_i) = \sum_{j=1}^{i-1}a_{ji}\mathbf{e}_j$。这表示
     $$ \forall \,\,1\leqslant j \leqslant i \leqslant n, \,\,\, (T - a_{11}\mathrm{I})(T - a_{22}\mathrm{I})\cdots(T - a_{ii}\mathrm{I})(\mathbf{e}_j) = \mathbf{0}. $$
     从而当$i=n$时，有
-    $$\forall \,\,1\leqslant i \leqslant n, \,\,\, c_T(T)(\mathbf{e}_i) = \prod_{j=1}^n(T - a_{jj}\mathrm{I})(\mathbf{e}_i) = \mathbf{0}.$$
+    $$\forall \,\,1\leqslant i \leqslant n, \,\,\, \prod_{j=1}^n(T - a_{jj}\mathrm{I})(\mathbf{e}_i) = \mathbf{0}.$$
+    定义整式$c_T$：
+    $$
+    c_T(x) = \prod_{j=1}^n(x - a_{jj}).
+    $$
+    则我们可以把前面的结论写作：
+    $$
+    c_T(T) = 0.
+    $$
     我们把$c_T$称作$T$的\textbf{本征式}。上式说明，$c_T$是$T$的归零式，而且它是一次式的乘积。所以，$m_T$作为$c_T$的因式，也是一次式的乘积。 
 
 \end{proof}
 
+我们用第一节中的三个自同态来验证这个命题。
+
+$A$的极小归零式为$m_A(z) = (z-1)(z-2)$，是两个一次式的乘积。
+按命题\ref{pp:6_8}，$A$可三角化。事实上，$A$可以对角化，
+对角化当然也是三角化。
+
+$B$的极小归零式为$m_B(z) = (z-1)^2$，也是一个一次式的乘积（$(z-1)$出现两次）。
+按命题\ref{pp:6_8}，$B$可三角化。前面我们已经具体找到了$B$的三角基。
+
+$C$的极小归零式为$m_C(z) = (z-3)^2(z-5)$，同样是一次式的乘积。
+按命题\ref{pp:6_8}，$C$可三角化。前面我们也具体找到了$C$的三角基。
+
+三个自同态的极小归零式都能分解为一次式的乘积，所以它们都可三角化。
 
 自同态能否三角化，取决于它的极小归零式能否写成一次式的乘积。
 那么，自同态的极小归零式是否总能写成一次式的乘积呢？这和它的系数有关。
@@ -3285,6 +3740,36 @@ $T$不一定能三角化。
     任何复系数有限维平直空间的自同态都可三角化。
 \end{pp}
 
+我们来看一个在实空间中不可三角化的例子。
+考虑$\mathbb{R}^2$上的自同态$D$，其矩阵为：
+$$
+D = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}.
+$$
+验证$D$的极小归零式。计算：
+$$
+D^2 = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}\begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} = \begin{bmatrix} -1 & 0 \\ 0 & -1 \end{bmatrix} = -\mathrm{I}.
+$$
+所以$D^2 + \mathrm{I} = 0$，即整式$z^2 + 1$是$D$的归零式。
+而$D$不是缩放映射（$\forall\;\lambda \in \mathbb{R},\;\;D \neq \lambda \mathrm{I}$），
+所以一次归零式不存在。因此$D$的极小归零式为：
+$$
+m_D(z) = z^2 + 1.
+$$
+整式$z^2 + 1$在$\mathbb{R}$中没有根，不能分解为实系数一次式的乘积。
+按命题\ref{pp:6_8}，$D$在$\mathbb{R}^2$上不可三角化。
+
+从直观上看，$D$的效果是把平面$\mathbb{R}^2$里的向量逆时针旋转$90°$。
+旋转$90°$后，没有非零向量与自身共轴，所以没有本征向量，也没有本征值，
+于是也没有$1$维不变子空间。没有$1$维不变子空间，就不可能有三角基。
+
+然而，如果我们把$D$看作$\mathbb{C}^2$上的自同态，情况就不同了。
+$z^2 + 1 = (z - \imath)(z + \imath)$在$\mathbb{C}$中可以分解为一次式的乘积。
+按命题\ref{pp:6_10}，$D$在$\mathbb{C}^2$上可三角化。
+实际上，$D$在$\mathbb{C}^2$上可以对角化：本征值为$\imath$和$-\imath$，
+对应的本征向量分别是$(1, -\imath)$和$(1, \imath)$。
+
+这个例子说明，同一个矩阵，在不同的系数域上，可能有完全不同的约简性质。
+
 自同态能否三角化，和极小归零式的性质有关。
 那么自同态能否对角化，是否也和极小归零式的性质有关呢？
 
@@ -3307,7 +3792,7 @@ $T$不一定能三角化。
     根据零空间引理，
     $$\mathbb{V} = \Ker (T - \lambda_1\mathrm{I}) \oplus \cdots \oplus \Ker (T - \lambda_k\mathrm{I}).$$
     考虑其中任意一个$T$-不变子空间$\Ker (T - \lambda_i\mathrm{I})$，设$\mathbf{e}_{i,1}, \cdots , \mathbf{e}_{i,d_i}$是它的一组基底，
-    则$\forall 1 \leqslant j \leqslant d_i, \,\,\, T(\mathbf{e}_{i,j} = \lambda_i \mathbf{e}_{i,j})$。
+    则$\forall 1 \leqslant j \leqslant d_i, \,\,\, T(\mathbf{e}_{i,j}) = \lambda_i \mathbf{e}_{i,j}$。
     这说明，在这组基上，$\Ker (T - \lambda_i\mathrm{I})$是对角矩阵：
     $$ \begin{bmatrix}
         \lambda_i & 0 & \cdots & 0 \\
@@ -3318,6 +3803,46 @@ $T$不一定能三角化。
     对所有$k$个子空间，都可以找出这样的基底。它们合并起来，得到的基底$\mathcal{B}$就是使$[T]_\mathcal{B}$为对角矩阵的基底。
 
 \end{proof}
+
+最后，我们用前面提到的四个自同态来总结三角化与对角化的关系。
+
+$A$的极小归零式$m_A(z) = (z-1)(z-2)$是一次式的乘积，且没有重根。
+按命题\ref{pp:6_11}，$A$可对角化。事实上，第一节中我们已经将$A$对角化了。
+
+$B$的极小归零式$m_B(z) = (z-1)^2$是一次式的乘积，但有重根（$z=1$是二重根）。
+按命题\ref{pp:6_8}，$B$可三角化；但按命题\ref{pp:6_11}，$B$不可对角化。
+这正好对应了我们前面的计算：$B$可以化为上三角矩阵$\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$，
+但无法化为对角矩阵。
+
+$C$的极小归零式$m_C(z) = (z-3)^2(z-5)$也是一次式的乘积，但有重根（$z=3$是二重根）。
+同理，$C$可三角化但不可对角化。
+
+$D$的极小归零式$m_D(z) = z^2 + 1$不是一次式的乘积（在$\mathbb{R}$上）。
+$D$既不可三角化，也不可对角化。
+
+将四个自同态对比：
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ & $A$ & $B$ & $C$ & $D$ \\
+\hline
+极小归零式 & $(z-1)(z-2)$ & $(z-1)^2$ & $(z-3)^2(z-5)$ & $z^2+1$ \\
+\hline
+一次式乘积 & 是 & 是 & 是 & 否（在$\mathbb{R}$上） \\
+\hline
+重根 & 无 & 有 & 有 & -- \\
+\hline
+三角化 & 能 & 能 & 能 & 否 \\
+\hline
+对角化 & 能 & 否 & 否 & 否 \\
+\hline
+\end{tabular}
+\end{center}
+
+可以看到，对角化是比三角化更强的要求。
+可三角化只要求极小归零式是一次式的乘积，
+可对角化要求极小式不仅是一次式的乘积，而且不能有重根。
+而极小归零式不是一次式的乘积时，连三角化都做不到。
 
 \section{本征空间}
 \subsection{和本征值有关的子空间}
@@ -3363,7 +3888,48 @@ $$ \mathbb{V} = \Ker (T - \lambda\mathrm{I})^{d_\lambda} \oplus P(T),$$
 也就是说，从0维空间开始，广义本征空间总是更高阶的广义本征空间的子空间。随着阶数增大，空间维数也不断增大，或维持不变。
 这是一个类似于俄罗斯套娃的结构，我们称为\textbf{空间套}。三角基也对应一个空间套，但我们会看到，两者性质有所差异。
 
-由于整个空间维数有限，所以广义本征空间的维数必然会在某个时刻停止增长。
+以前面提到的自同态$B$和$C$为例。对$B$来说，本征值为$1$。我们已经知道：
+$$
+\Ker(B - \mathrm{I}) = \mathbb{R}(2,1),
+$$
+维数为$1$。接下来计算$\Ker(B - \mathrm{I})^2$。首先：
+$$
+(B - \mathrm{I})^2 = \begin{bmatrix} 2 & -4 \\ 1 & -2 \end{bmatrix}^2 = \begin{bmatrix} 4-4 & -8+8 \\ 2-2 & -4+4 \end{bmatrix} = \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}.
+$$
+所以$\Ker(B - \mathrm{I})^2 = \mathbb{R}^2$，维数为$2$。空间套为：
+$$
+\{\mathbf{0}\} \subset \mathbb{R}(2,1) \subset \Ker(B - \mathrm{I})^2 = \mathbb{R}^2.
+$$
+维数从$0$增长到$1$，再增长到$2$，之后不再增长（因为已经是整个空间了）。
+
+对$C$来说，我们关注本征值$3$。我们已经知道：
+$$
+\Ker(C - 3\mathrm{I}) = \mathbb{R}(0,1,0),
+$$
+维数为$1$。接下来计算$\Ker(C - 3\mathrm{I})^2$。首先：
+$$
+(C - 3\mathrm{I})^2 = \begin{bmatrix} 2 & 0 & 1 \\ 1 & 0 & 2 \\ 0 & 0 & 0 \end{bmatrix}^2 = \begin{bmatrix} 4 & 0 & 2 \\ 2 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}.
+$$
+解方程$(C - 3\mathrm{I})^2\mathbf{u} = \mathbf{0}$：
+$$
+\begin{bmatrix} 4 & 0 & 2 \\ 2 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}\begin{bmatrix} u_1 \\ u_2 \\ u_3 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix}.
+$$
+两个方程分别是$4u_1 + 2u_3 = 0$和$2u_1 + u_3 = 0$，它们等价。
+解得$u_3 = -2u_1$，$u_2$自由。所以$\Ker(C - 3\mathrm{I})^2$的维数为$2$，一组基为$(1,0,-2)$和$(0,1,0)$。
+
+再计算$\Ker(C - 3\mathrm{I})^3$。由于
+$$
+(C - 3\mathrm{I})^3 = (C - 3\mathrm{I})^2(C - 3\mathrm{I}) = \begin{bmatrix} 4 & 0 & 2 \\ 2 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}\begin{bmatrix} 2 & 0 & 1 \\ 1 & 0 & 2 \\ 0 & 0 & 0 \end{bmatrix} = \begin{bmatrix} 8 & 0 & 4 \\ 4 & 0 & 2 \\ 0 & 0 & 0 \end{bmatrix},
+$$
+解方程$(C - 3\mathrm{I})^3\mathbf{u} = \mathbf{0}$得到$8u_1 + 4u_3 = 0$，即$u_3 = -2u_1$，$u_2$自由。
+所以$\Ker(C - 3\mathrm{I})^3$的维数仍为$2$，与$\Ker(C - 3\mathrm{I})^2$相同。
+空间套为：
+$$
+\{\mathbf{0}\} \subset \mathbb{R}(0,1,0) \subset \langle (1,0,-2),\, (0,1,0) \rangle = \Ker(C - 3\mathrm{I})^2 = \Ker(C - 3\mathrm{I})^3 \cdots
+$$
+维数从$0$增长到$1$，再增长到$2$，之后不再增长。事实上，我们知道对于更大的$i$，$\Ker(C - 3\mathrm{I})^i$的维数也不会增长了。因为如果$\Ker(C - 3\mathrm{I})^i$增长到$3$维，就说明$(C - 3\mathrm{I})^i$是零变换。但我们知道本征值$5$对应的本征向量$\mathbf{u}$使得$(C - 3\mathrm{I})^i\mathbf{u} = 2^i\mathbf{u}$，永远不是零向量。所以$(C - 3\mathrm{I})^i$永远不会是零变换。
+
+实际上，由于整个空间维数有限，所以广义本征空间的维数必然会在某个时刻停止增长。
 假设$i_0$是广义本征空间第一次停止维数增长的地方，即$\Ker (T - \lambda\mathrm{I})^{i_0} = \Ker (T - \lambda\mathrm{I})^{i_0+1}$，
 我们可以证明，广义本征空间自此就不再“扩大”了；之后所有更高阶的广义本征空间，都是同一个空间。
 \begin{pp}\label{pp:6_12_2}
@@ -3450,7 +4016,6 @@ $$a_1\prod_{i=2}^k (\lambda_1 - \lambda_i)^{n}\mathbf{x} = \mathbf{0}.$$
 
 \end{proof}
 
-
 \subsection{本重数与全重数}
 结合以上讨论，我们引入以下的术语和记法：
 
@@ -3469,19 +4034,63 @@ $$a_1\prod_{i=2}^k (\lambda_1 - \lambda_i)^{n}\mathbf{x} = \mathbf{0}.$$
 如果本重数等于全重数，那么广义本征空间从一开始就稳定，所以本征值的阶为1，本征空间就是全本征空间。
 如果本征值的本重数小于全重数，那么它的阶至少为2。
 更具体来说，设
-$$ b_i = \nul (T - \lambda\mathrm{I})^{i+1} - \nul (T - \lambda\mathrm{I})^{i},$$
-则
-$$ \mu_a(\lambda) = \mu_g(\lambda) + \sum_{i=1}^{d_\lambda-1} b_i.$$
-而按照定义，$b_i \geqslant 1$，所以
-$$ \mu_a(\lambda) \geqslant \mu_g(\lambda) + d_\lambda - 1 \geqslant d_\lambda.$$
+$$ \forall \; i\,\in\, \mathbb{N},\quad b_i = \nul (T - \lambda\mathrm{I})^{i+1} - \nul (T - \lambda\mathrm{I})^{i},$$
+则$b_0 = \mu_g(\lambda)$；$\forall i<d_{\lambda}$，$b_i>0$；$\forall i\geqslant d_{\lambda}$，$b_i=0$，于是
+$$ \mu_a(\lambda) = \sum_{i\in\mathbb{N}} b_i = \sum_{i=0}^{d_{\lambda}-1} b_i = \mu_g(\lambda) + \sum_{i=1}^{d_\lambda-1} b_i.$$
+另一方面，既然$\forall i<d_{\lambda}$，$b_i \geqslant 1$，就有：
+$$ \mu_a(\lambda) \geqslant d_\lambda.$$
 
 可三角化的自同态可以对角化，当且仅当它所有的本征值的本重数都等于全重数，阶为1，
 也当且仅当所有本征值的本征空间就是全本征空间。
 
-本征值$\lambda$是极小归零式的根。下面，我们给出$\lambda$作为根在极小归零式中的重数和它的阶的关系。
+我们把三个自同态的本重数、全重数和阶整理如下：
+
+对$A$来说：
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+本征值$\lambda$ & $\mu_g(\lambda)$ & $\mu_a(\lambda)$ & $d_\lambda$ & 各$b_i$ \\
+\hline
+$1$ & $1$ & $1$ & $1$ & $b_0 = 1$ \\
+$2$ & $1$ & $1$ & $1$ & $b_0 = 1$ \\
+\end{tabular}
+\end{center}
+两个本征值的本重数都等于全重数，阶都是$1$。
+空间套从第一步就稳定，本征空间就是全本征空间。
+
+对$B$来说：
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+本征值$\lambda$ & $\mu_g(\lambda)$ & $\mu_a(\lambda)$ & $d_\lambda$ & 各$b_i$ \\
+\hline
+$1$ & $1$ & $2$ & $2$ & $b_0 = 1,\; b_1 = 1$ \\
+\end{tabular}
+\end{center}
+本征值$1$的本重数为$1$，全重数为$2$，阶为$2$。
+空间套为$\{\mathbf{0}\} \subset \Ker(B-\mathrm{I}) \subset \Ker(B-\mathrm{I})^2$，
+维数分别为$0, 1, 2$。每步增长$1$维：$b_0 = 1$，$b_1 = 2 - 1 = 1$。
+全重数$\mu_a(1) = b_0 + b_1 = 1 + 1 = 2$。
+
+对$C$来说：
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+本征值$\lambda$ & $\mu_g(\lambda)$ & $\mu_a(\lambda)$ & $d_\lambda$ & 各$b_i$ \\
+\hline
+$3$ & $1$ & $2$ & $2$ & $b_0 = 1,\; b_1 = 1$ \\
+$5$ & $1$ & $1$ & $1$ & $b_0 = 1$ \\
+\end{tabular}
+\end{center}
+本征值$3$的本重数为$1$，全重数为$2$，阶为$2$，与$B$的情形类似。
+本征值$5$的本重数等于全重数，阶为$1$，与$A$的情形类似。
+$C$可以看作"$B$式结构"和"$A$式结构"的组合。
+
+从表中可以观察到：
+$A$的所有本征值都满足$\mu_g = \mu_a$，这对应$A$可对角化。
+$B$和$C$都有某个本征值满足$\mu_g < \mu_a$，这对应它们不可对角化。
+
+本征值$\lambda$总是极小归零式的根。下面，我们给出$\lambda$作为根在极小归零式中的重数和它的阶的关系。
 
 \begin{pp}\label{pp:6_12_5}
-    自同态$T$的本征值$\lambda$作为极小归零式$m_T$的根，对应的本重数就是它的阶$d_\lambda$。
+    自同态$T$的本征值$\lambda$作为极小归零式$m_T$的根，对应的重数就是它的阶$d_\lambda$。
 \end{pp}
 \begin{proof} % [{\bfseries 证明\ref{pp:6_12_5}}]
 设$T$的极小归零式写为：
@@ -3502,7 +4111,7 @@ $$ \mathbf{x} = r_1(T) (q(T)(\mathbf{x})) + r_2(T)((T - \lambda \mathrm{I})(\mat
 另一方面，如果$d > d_{\lambda}$，则说明$\Ker (T - \lambda\mathrm{I})^{d - 1} = \Ker (T - \lambda\mathrm{I})^{d}$。那么考虑整式
 $$p(z) = (z - \lambda)^{d-1} q(z)$$
 $\forall \mathbf{v} \in \mathbb{V}$，零空间引理说明，可以把$\mathbf{v}$写成
-$$\mathbf{v} = \mathbf{v}_1 + \mathbf{v}_2, \,\,\, \mathbf{v}_1 \in \Ker (T - \lambda\mathrm{I})^{d}, \,\,\, \mathbf{v}_1 \in \Ker q(T) $$
+$$\mathbf{v} = \mathbf{v}_1 + \mathbf{v}_2, \,\,\, \mathbf{v}_1 \in \Ker (T - \lambda\mathrm{I})^{d}, \,\,\, \mathbf{v}_2 \in \Ker q(T) $$
 由于$\Ker (T - \lambda\mathrm{I})^{d- 1} = \Ker (T - \lambda\mathrm{I})^{d}$，
 $(T - \lambda\mathrm{I})^{d- 1}(\mathbf{v}_1) = \mathbf{0}$。
 所以，将$p(T)$作用到$\mathbf{v}$上，就有
@@ -3516,6 +4125,23 @@ $(T - \lambda\mathrm{I})^{d- 1}(\mathbf{v}_1) = \mathbf{0}$。
 以上两方面论证说明，$d$就是$\lambda$的阶$d_{\lambda}$。
 
 \end{proof}
+
+以前面提到的$B$和$C$为例。$B$的极小归零式为$m_B(z) = (z-1)^2$。
+本征值$1$在$m_B$中的重数为$2$。
+前面我们算出$B$关于本征值$1$的阶$d_1 = 2$（因为$\Ker(B-\mathrm{I}) \subsetneq \Ker(B-\mathrm{I})^2$，
+而$\Ker(B-\mathrm{I})^2 = \Ker(B-\mathrm{I})^3 = \cdots$）。
+两者相等，与命题\ref{pp:6_12_5}一致。
+
+$C$的极小归零式为$m_C(z) = (z-3)^2(z-5)$。
+本征值$3$在$m_C$中的重数为$2$，本征值$5$在$m_C$中的重数为$1$。
+前面我们算出$C$关于本征值$3$的阶$d_3 = 2$，关于本征值$5$的阶$d_5 = 1$。
+两者分别相等，与命题\ref{pp:6_12_5}一致。
+
+$A$的极小归零式为$m_A(z) = (z-1)(z-2)$。
+本征值$1$和$2$在$m_A$中的重数都是$1$。
+$A$关于两个本征值的阶也都是$1$。同样一致。
+
+可以看到，极小归零式中某个本征值的重数，恰好刻画了该本征值对应的空间套增长了“多少步”才稳定。
 
 如果$T$的极小归零式是一次式的乘积，那么可以表示成：
 $$ m_T(z) = (z - \lambda_1)^{d_1} (z - \lambda_2)^{d_2} \cdots  (z - \lambda_k)^{d_k}.$$
@@ -3535,6 +4161,23 @@ $$ \deg m_T = \sum_{i=1}^k d_i \leqslant \sum_{i=1}^k \mu_a(\lambda_i) = n.$$
     极小归零式的次数不超过空间的维数。
 \end{pp}
 
+以前面提到的自同态$A,B,C$为例。
+
+对$A$来说，两个本征值的全重数之和为$\mu_a(1) + \mu_a(2) = 1 + 1 = 2 = \dim\mathbb{R}^2$。
+极小归零式$m_A(z) = (z-1)(z-2)$的次数为$2$，不超过$\dim\mathbb{R}^2 = 2$。
+
+对$B$来说，唯一本征值的全重数为$\mu_a(1) = 2 = \dim\mathbb{R}^2$。
+极小归零式$m_B(z) = (z-1)^2$的次数为$2$，不超过$\dim\mathbb{R}^2 = 2$。
+
+对$C$来说，两个本征值的全重数之和为$\mu_a(3) + \mu_a(5) = 2 + 1 = 3 = \dim\mathbb{R}^3$。
+极小归零式$m_C(z) = (z-3)^2(z-5)$的次数为$3$，不超过$\dim\mathbb{R}^3 = 3$。
+
+三个例子中，极小归零式的次数恰好等于空间维数。
+但这并非总是如此。比如，缩放映射$T = 2\mathrm{I}$在$\mathbb{R}^n$上的极小归零式是$z - 2$，
+次数为$1$，可以远小于空间维数$n$。
+极小归零式的次数等于空间维数，当且仅当自同态的每个本征值的阶都等于其全重数。
+对$A$、$B$、$C$来说，恰好都满足这个条件。
+
 \section{幂零自同态与标准形式}
 \subsection{幂零自同态}
 接下来，我们来看看$T$能否在$H_T(\lambda)$中约简。由前面的定义，
@@ -3552,6 +4195,39 @@ $$ \deg m_T = \sum_{i=1}^k d_i \leqslant \sum_{i=1}^k \mu_a(\lambda_i) = n.$$
     T^3(x_1, x_2, x_3) &= T(x_3, 0, 0) =  (0, 0, 0).
 \end{align*}
 它的阶是3。
+
+再来看前面提到的几个自同态的幂零部分。对自同态$B$来说，它的唯一本征值为$1$，极小归零式为$(z-1)^2$。
+考虑$N_B = B - \mathrm{I}$：
+$$
+N_B = \begin{bmatrix} 3 & -4 \\ 1 & -1 \end{bmatrix} - \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 2 & -4 \\ 1 & -2 \end{bmatrix}.
+$$
+验证$N_B$是幂零的：
+$$
+N_B^2 = \begin{bmatrix} 2 & -4 \\ 1 & -2 \end{bmatrix}\begin{bmatrix} 2 & -4 \\ 1 & -2 \end{bmatrix} = \begin{bmatrix} 4-4 & -8+8 \\ 2-2 & -4+4 \end{bmatrix} = \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}.
+$$
+而$N_B \neq 0$，所以$N_B$是$2$阶幂零自同态。
+
+对自同态$C$来说，本征值$3$的全本征空间为$H_C(3) = \Ker(C-3\mathrm{I})^2$，维数为$2$。
+考虑$N_C = C - 3\mathrm{I}$限制在$H_C(3)$上的部分。前面我们已经算出：
+$$
+C - 3\mathrm{I} = \begin{bmatrix} 2 & 0 & 1 \\ 1 & 0 & 2 \\ 0 & 0 & 0 \end{bmatrix}, \quad (C-3\mathrm{I})^2 = \begin{bmatrix} 4 & 0 & 2 \\ 2 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}.
+$$
+$H_C(3) = \Ker(C-3\mathrm{I})^2$的一组基为$(0,1,0)$和$(1,0,-2)$。
+验证$N_C$在$H_C(3)$上是幂零的：
+$$
+N_C(0,1,0) = (0, 0, 0), \quad N_C(1,0,-2) = (2-2,\, 1-4,\, 0) = (0,-3,0).
+$$
+而$(0,-3,0) = -3(0,1,0) \in H_C(3)$，所以$N_C$确实把$H_C(3)$映射到自身。
+再算一步：
+$$
+N_C^2(1,0,-2) = N_C(0,-3,0) = (0, 0, 0).
+$$
+所以$N_C$限制在$H_C(3)$上是$2$阶幂零自同态。
+
+对自同态$A$来说，它的极小归零式$(z-1)(z-2)$没有重根，
+两个本征值的阶都是$1$。这意味着$A - \mathrm{I}$和$A - 2\mathrm{I}$
+各自的本征空间就是全本征空间，不需要进一步考虑幂零部分。
+$A$可以直接对角化，不涉及非平凡的幂零结构。
 
 从广义本征空间的角度来看，幂零自同态$N$其实就是$N - 0\mathrm{I}$，
 空间套$\Ker N, \Ker N^2, \cdots$的维数逐渐增长到整个空间的维数$n$，
@@ -3580,9 +4256,312 @@ $$ a_2 N\mathbf{u} + a_3 N^2\mathbf{u} +\cdots + a_{d_\mathbf{u}} N^{d_\mathbf{u
 
 \end{proof}
 
+以自同态$B$和$C$为例。对$N_B = B - \mathrm{I} = \begin{bmatrix} 2 & -4 \\ 1 & -2 \end{bmatrix}$来说
+取向量$\mathbf{u} = (1,0)$，追踪它在$N_B$下的轨迹：
+$$
+N_B(1,0) = (2, 1), \quad N_B(2,1) = (4-4,\, 2-2) = (0,0).
+$$
+所以$(1,0)$所在的轨迹为：
+$$
+(1,0) \;\longrightarrow\; (2,1) \;\longrightarrow\; \mathbf{0}.
+$$
+轨迹长度为$2$。出发向量是$(1,0)$，结束向量是$(2,1)$。
+按命题\ref{pp:6_12_3}，$(1,0)$和$(2,1)$直无关。
+它们构成$\mathbb{R}^2$的一组基。
+
+对$N_C = C - 3\mathrm{I}$限制在$H_C(3)$上的部分来说，
+取向量$\mathbf{u} = (-1, 0, 2)$，追踪它在$N_C$下的轨迹：
+$$
+N_C(-1,0,2) = (0, 3, 0), \quad N_C(0,3,0) = (0, 0, 0).
+$$
+所以$(-1,0,2)$所在的轨迹为：
+$$
+(-1,0,2) \;\longrightarrow\; (0,3,0) \;\longrightarrow\; \mathbf{0}.
+$$
+轨迹长度为$2$。出发向量是$(-1,0,2)$，结束向量是$(0,3,0)$。
+注意结束向量$(0,3,0) = 3(0,1,0)$是本征值$3$的本征向量的$3$倍，
+所以$N_C$把结束向量映射为零向量。
+按命题\ref{pp:6_12_3}，$(-1,0,2)$和$(0,3,0)$直无关。
+它们构成$H_C(3)$的一组基。
+
+再来看$H_C(3)$中另一个向量$(0,1,0)$。它本身就是本征向量：
+$$
+N_C(0,1,0) = (0,0,0).
+$$
+所以$(0,1,0)$所在的轨迹只有它自己：
+$$
+(0,1,0) \;\longrightarrow\; \mathbf{0}.
+$$
+轨迹长度为$1$。这条轨迹是"退化"的：出发向量就是结束向量。
+它对应的循环子空间就是$1$维的本征空间$\mathbb{R}(0,1,0)$。
+
+可以看到，$H_C(3)$中向量$(-1,0,2)$的轨迹"覆盖"了$(0,1,0)$的轨迹：
+前者的结束向量是后者的$3$倍。所以，我们不需要把两条轨迹都取出来作为基底。
+只取较长的那条轨迹$(-1,0,2), (0,3,0)$就够了。
+
 我们把$N$在某向量上留下的一条轨迹生成的空间称为它的$N$-\textbf{循环子空间}。由上可知，这个空间的基就是对应的轨迹，
 而且是$N$-不变子空间。所以也称其为\textbf{循环不变子空间}，称轨迹为它的\textbf{循环基}。
 从$\mathbf{u}$出发的轨迹生成的循环子空间记为$C_N(\mathbf{u})$。
+
+我们来写出自同态$B,C$具体的循环子空间。
+
+对$N_B$来说，向量$(1,0)$的轨迹为$(1,0), (2,1)$，所以：
+$$
+C_{N_B}((1,0)) = \langle (1,0),\, (2,1) \rangle = \mathbb{R}^2.
+$$
+整个空间就是一条轨迹生成的循环子空间。$N_B$只有一个循环子空间。
+
+对$N_C$限制在$H_C(3)$上来说，向量$(-1,0,2)$的轨迹为$(-1,0,2), (0,3,0)$，所以：
+$$
+C_{N_C}((-1,0,2)) = \langle (-1,0,2),\, (0,3,0) \rangle = H_C(3).
+$$
+同样，$H_C(3)$整体就是一条轨迹生成的循环子空间。
+
+这两个例子中，空间恰好等于一条轨迹生成的循环子空间。
+但一般来说，空间可能需要多条轨迹的直和来表示。
+比如考虑$\mathbb{R}^4$上的幂零自同态$T: (x_1,x_2,x_3,x_4) \mapsto (x_2, 0, x_4, 0)$，
+则有两条轨迹：
+$$
+(0,1,0,0) \;\longrightarrow\; (1,0,0,0) \;\longrightarrow\; \mathbf{0}, \quad \mbox{和}\; (0,0,0,1) \;\longrightarrow\; (0,0,1,0) \;\longrightarrow\; \mathbf{0}.
+$$
+两条轨迹各长$2$，分别生成$2$维循环子空间。它们的直和就是$\mathbb{R}^4$。
+
+在每个循环子空间$C_N(\mathbf{u}_i)$中，轨迹为$\mathbf{u}_i, N\mathbf{u}_i, \cdots, N^{e_i - 1}\mathbf{u}_i$。考察$N^{k+1}$的零空间相比$N^k$有什么变化。
+$N^k$的零空间由使得$N^k(N^j\mathbf{u}_i)=\mathbf{0}$的向量$N^j\mathbf{u}_i$生成。因此这些向量的下标是使得$k+j\geqslant e_i$的$j$：$j=e_i-k, \cdots, e_i - 1$。
+当$k$变为$k+1$时：
+\begin{itemize}
+\item 如果$e_i > k$，则$e_i-k>0$，$e_i-(k+1)\geqslant 0$。因此$\mathbf{u}_i, N\mathbf{u}_i, \cdots, N^{e_i - 1}\mathbf{u}_i$中使得$N^{k+1}N^j\mathbf{u}_i = \mathbf{0}$的向量会多一个。零空间维数增加$1$。
+\item 如果$e_i \leqslant k$，则$e_i - k \leqslant 0$。即$N^k$已经把整个$C_N(\mathbf{u}_i)$映射为零向量，零空间维数已经是$e_i$，不再增加。
+\end{itemize}
+因此，$b_k(\lambda)$作为$p$个$C_N(\mathbf{u}_i)$的零空间增长的总维数，恰好等于轨迹长度严格大于$k$的循环子空间的个数：
+
+\begin{pp}\label{pp:6_13_1}
+$$ b_k(\lambda) = \left|\{1\leqslant i \leqslant p\mid e_i > k\}\right|. $$
+\end{pp}
+
+\begin{figure}[h]
+    \vspace{4pt}
+    \centering
+    \def\UnitLength{0.7cm}        % 单位长度（x,y 等长）
+    \begin{tikzpicture}[x=\UnitLength, y=\UnitLength]
+
+    % ==================== 可调参数 ====================
+    \def\AxisXMax{13}             % x 轴正半轴右端点
+    \def\AxisYMax{10}             % y 轴正半轴上端点
+
+    % 从下往上每排单位方格数；0 表示该排不画方格（本图第5排为圆点）
+    % 列表中不要加入空格
+    \def\SquareCounts{12,11,11,8,0,4,3,3,2}
+    \def\SquareLineWidth{0.5pt}
+    \def\AxisLineWidth{0.6pt}
+
+    % 小黑圆点参数（原第5排半整点位置）
+    \def\DotsRowIndex{5}          % 圆点所在排号（从下往上，1-based）
+    \pgfmathsetmacro\DotsY{\DotsRowIndex - 0.5} % 该排中心 y
+    \def\DotsCount{6}             % 圆点个数
+    \def\DotsStartX{0.5}          % 第一个圆点中心 x（原第1列中心）
+    \def\DotsSpacing{1}           % 相邻圆点中心间距
+    \def\DotRadius{1.5pt}         % 圆点半径
+    % =================================================
+    
+    \draw[fill=blue, fill opacity=0.3] (8, 0) rectangle (9, 3);
+    % 先画方格
+    \foreach \cnt [count=\row] in \SquareCounts {
+    \ifnum\cnt>0
+        \foreach \col in {1,...,\cnt} {
+        \draw[line width=\SquareLineWidth]
+            (\col-1,\row-1) rectangle (\col,\row);
+        }
+    \fi
+    }
+
+    % 再画小黑圆点
+    \ifnum\DotsCount>0
+    \pgfmathtruncatemacro\DotsLast{\DotsCount-1}
+    \foreach \k in {0,...,\DotsLast} {
+        \pgfmathsetmacro\DotX{\DotsStartX + \k*\DotsSpacing}
+        \fill[black] (\DotX,\DotsY) circle[radius=\DotRadius];
+    }
+    \fi
+
+    % 最后画坐标轴（只画正半轴，盖在方格边界上保持清晰）
+    \draw[-latex, line width=\AxisLineWidth] (0,0) -- (\AxisXMax,0);
+    \draw[-latex, line width=\AxisLineWidth] (0,0) -- (0,\AxisYMax);
+
+    % ---------- 标签相关可调参数 ----------
+    \def\LabelXSep{0.15}        % 左侧标签到 y 轴的距离（单位与坐标轴相同）
+    \def\LabelXBelowSep{0.12}   % 下方标签到 x 轴的距离
+    \def\LabelFont{\footnotesize} % 标签字体大小，可改为 \small、\scriptsize 等
+
+    \def\VdotsY{5.0}            % 竖省略号 \vdots 的 y 坐标，可调
+    \def\CdotsX{6.5}            % 横省略号 \cdots 的 x 坐标，可调
+
+    \def\TotalRows{9}           % 总排数，用于计算最后一排中心
+    \def\MaxCols{12}            % 最大列数，用于计算最后一列中心
+
+    % ---------- y 轴左侧标签 ----------
+    \pgfmathsetmacro\LastRowCenter{\TotalRows - 0.5}
+    \node[anchor=east, font=\LabelFont] at (-\LabelXSep, 0.5) {$e_1$};
+    \node[anchor=east, font=\LabelFont] at (-\LabelXSep, 1.5) {$e_2$};
+    \node[anchor=east, font=\LabelFont] at (-\LabelXSep-0.2, \VdotsY) {$\vdots$};
+    \node[anchor=east, font=\LabelFont] at (-\LabelXSep-0.2, 1.5+1) {$\vdots$};
+    \node[anchor=east, font=\LabelFont] at (-\LabelXSep-0.2, \LastRowCenter-1) {$\vdots$};
+
+    \node[anchor=east, font=\LabelFont] at (-\LabelXSep, \LastRowCenter) {$e_p$};
+    % ---------- x 轴下方标签 ----------
+    \node[anchor=north, font=\LabelFont] at (0.5, -\LabelXBelowSep) {$b_0$};
+    \node[anchor=north, font=\LabelFont] at (1.5, -\LabelXBelowSep) {$b_1$};
+    \node[anchor=north, font=\LabelFont] at (1.5+1, -\LabelXBelowSep-0.2) {$\cdots$};
+    \node[anchor=north, font=\LabelFont] at (\CdotsX, -\LabelXBelowSep-0.2) {$\cdots$};
+
+    % 最后一列 b_{d_\lambda-1} 用 \MaxCols 自动计算中心
+    \pgfmathsetmacro\LastColCenter{\MaxCols - 0}
+    \node[anchor=north, font=\LabelFont] at (\LastColCenter-1.5, -\LabelXBelowSep-0.2) {$\cdots$};
+    \node[anchor=north, font=\LabelFont] at (\LastColCenter, -\LabelXBelowSep)
+    {$b_{d_{\lambda}-1}$};
+
+    \node at (11,5) {$b_k = |\{e_i > k\}|$};
+    \draw[-{Triangle[scale=0.8]}] (9.3,4.6) -- (8.5, 2.5);
+
+    \end{tikzpicture}
+    \caption*{%
+        \begin{tabular}{@{}l@{}}
+            \texttt{用横排的方格表示轨道长度$e_1\geqslant e_2\geqslant \cdots \geqslant e_p$，}\\
+            \texttt{则$b_k$（左起第$k+1$列高度）就是长度超过$k$的轨道个数。}
+        \end{tabular}%
+    }
+\end{figure}
+
+特别地，$b_0(\lambda) = \mu_g(\lambda) = p$，因为所有轨迹长度都大于$0$。具体来说，我们有：
+\begin{enumerate}
+\item 本重数$\mu_g(\lambda) = p = b_0(\lambda)$。
+\item 全重数$\mu_a(\lambda) = e_1 + e_2 + \cdots + e_p = \sum_{k=0}^{d_\lambda - 1} b_k(\lambda)$。
+\item 阶$d_\lambda = e_1$。
+\end{enumerate}
+\begin{proof}
+(1) 每个单位标准形式恰好对应$1$维本征空间（轨迹中只有末向量是本征向量），
+所以本征空间维数等于单位标准形式的个数，也等于$b_0(\lambda)$。
+
+(2) 全本征空间的维数等于所有单位标准形式的阶数之和。
+另一方面，由$b_k(\lambda) = \left|\{1\leqslant i \leqslant p\mid e_i > k\}\right|$，
+$$ \sum_{k=0}^{d_\lambda - 1} b_k(\lambda) = \sum_{k=0}^{d_\lambda - 1} \left|\{1\leqslant i \leqslant p\mid e_i > k\}\right| = \sum_{i=1}^p e_i. $$
+（每个轨迹长度为$e_i$的单位标准形式，在$k = 0, 1, \cdots, e_i - 1$时各被计数一次。可以理解用两种方法统计方格的总数。）
+
+(3) 极小归零式中$(z - \lambda)$的重数等于最大轨迹长度$e_1$（命题\ref{pp:6_12_5}），即$d_\lambda = e_1$。
+\end{proof}
+
+\begin{et}\label{et:6_nilpotent}
+考虑$\mathbb{R}^5$上的自同态$M$，
+$$M(x_1, x_2, x_3, x_4, x_5) = (x_2 + x_4,\; x_3,\; 0,\; x_5,\; 0).$$
+\begin{enumerate}
+\item 写出$M$在标准基上的矩阵。
+\item 计算$M^2$和$M^3$，验证$M$是幂零自同态，并确定其阶。
+\item 求解$\Ker M$、$\Ker M^2$、$\Ker M^3$，写出各自的维数和一组基。验证空间套：
+$$\{\mathbf{0}\} \subset \Ker M \subset \Ker M^2 \subset \Ker M^3,$$
+并指出空间套首次稳定的阶数。写出各$b_k$的值。
+\item 验证$\mathbf{e}_3 \to \mathbf{e}_2 \to \mathbf{e}_1 \to \mathbf{0}$是$M$的一条轨迹，并求其长度。
+\item 在$\Ker M^2$中寻找一个不属于$\langle \mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3\rangle$的向量$\mathbf{v}$，使得$M\mathbf{v} \neq \mathbf{0}$而$M^2\mathbf{v} = \mathbf{0}$。写出$\mathbf{v}$所在的轨迹及其长度。
+\item 验证两条轨迹中的向量合起来构成$\mathbb{R}^5$的一组基，并写出对应的两个循环子空间。
+\end{enumerate}
+\end{et}
+
+\begin{so}
+\textbf{(1)} .\;
+$M$在标准基上的矩阵为：
+$$
+M = \begin{bmatrix}
+0 & 1 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix}.
+$$
+\textbf{(2)} .\;
+计算$M^2$。按照矩阵乘法：
+$$
+M^2 = \begin{bmatrix}
+0 & 0 & 1 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix}.
+$$
+具体验证第一行：$M$的第一行为$(0,1,0,1,0)$，乘以$M$得到$M$的第二行加第四行：
+$(0,0,1,0,0) + (0,0,0,0,1) = (0,0,1,0,1)$。其余各行类似可得。
+
+再计算$M^3 = M^2 \cdot M$。$M^2$仅第一行非零，为$(0,0,1,0,1)$，乘以$M$得到$M$的第三行加第五行：
+$(0,0,0,0,0) + (0,0,0,0,0) = (0,0,0,0,0)$。因此：
+$$M^3 = \begin{bmatrix} 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 \end{bmatrix}.$$
+而$M^2 \neq 0$（第一行有非零元素），所以$M$是\textbf{3阶幂零自同态}，极小归零式为$z^3$。
+
+\textbf{(3)} 求$\Ker M$：解$M\mathbf{x} = \mathbf{0}$，即：
+$$x_2 + x_4 = 0, \quad x_3 = 0, \quad x_5 = 0.$$
+自由变量为$x_1$和$x_4$（取$x_2 = -x_4$）。一组基为：
+$$(1,0,0,0,0), \quad (0,-1,0,1,0).$$
+$\dim \Ker M = 2$。
+
+求$\Ker M^2$：解$M^2\mathbf{x} = \mathbf{0}$，即：
+$$x_3 + x_5 = 0.$$
+自由变量为$x_1, x_2, x_4, x_5$（取$x_3 = -x_5$）。一组基为：
+$$(1,0,0,0,0), \quad (0,1,0,0,0), \quad (0,0,-1,0,1), \quad (0,0,0,1,0).$$
+$\dim \Ker M^2 = 4$。
+
+$\Ker M^3 = \mathbb{R}^5$，$\dim \Ker M^3 = 5$。
+
+空间套为：
+$$\{\mathbf{0}\} \subsetneq \Ker M \subsetneq \Ker M^2 \subsetneq \Ker M^3 = \mathbb{R}^5,$$
+维数分别为$0, 2, 4, 5$。空间套在$i=3$时首次稳定（$\Ker M^3 = \Ker M^4 = \cdots = \mathbb{R}^5$）。
+
+各$b_k$值为：
+\begin{align*}
+    b_0 &= \nul M = 2, \\
+    b_1 &= \nul M^2 - \nul M = 2, \\
+    b_2 &= \nul M^3 - \nul M^2 = 1
+\end{align*}
+
+\textbf{(4)} 逐步计算：
+$$M(0,0,1,0,0) = (0,1,0,0,0) = \mathbf{e}_2,$$
+$$M(0,1,0,0,0) = (1,0,0,0,0) = \mathbf{e}_1,$$
+$$M(1,0,0,0,0) = (0,0,0,0,0) = \mathbf{0}.$$
+所以$\mathbf{e}_3 \to \mathbf{e}_2 \to \mathbf{e}_1 \to \mathbf{0}$是一条轨迹。\textbf{长度为3}。
+
+\textbf{(5)} 取$\mathbf{v} = (0,0,-1,0,1)$。首先验证$\mathbf{v} \in \Ker M^2$：
+$M^2\mathbf{v} = (x_3+x_5, 0, 0, 0, 0) = (-1+1, 0, 0, 0, 0) = \mathbf{0}$。成立。
+
+计算$M\mathbf{v}$：
+$$M(0,0,-1,0,1) = (0+0,\; -1,\; 0,\; 1,\; 0) = (0,-1,0,1,0) \neq \mathbf{0}.$$
+计算$M^2\mathbf{v}$：
+$$M(0,-1,0,1,0) = (-1+1,\; 0,\; 0,\; 0,\; 0) = (0,0,0,0,0) = \mathbf{0}.$$
+所以$\mathbf{v}$所在的轨迹为：
+$$(0,0,-1,0,1) \longrightarrow (0,-1,0,1,0) \longrightarrow \mathbf{0}.$$
+\textbf{长度为2}。
+
+\textbf{(6)} 两条轨迹的向量合起来，作为列向量排成矩阵：
+$$\begin{bmatrix} 1 & 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & -1 & 0 \\ 0 & 0 & 1 & 0 & -1 \\ 0 & 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 & 1 \end{bmatrix}.$$
+这是上三角矩阵，对角线元素全为$1$，效（行列式）为$1 \neq 0$。因此这$5$个向量直无关，构成$\mathbb{R}^5$的一组基。
+
+对应的两个循环子空间为：
+$$C_M(\mathbf{e}_3) = \langle \mathbf{e}_3,\, \mathbf{e}_2,\, \mathbf{e}_1 \rangle = \langle (1,0,0,0,0),\, (0,1,0,0,0),\, (0,0,1,0,0)\rangle,$$
+$$C_M(\mathbf{v}) = \langle (0,0,-1,0,1),\, (0,-1,0,1,0)\rangle.$$
+两者维数之和为$3+2=5=\dim\mathbb{R}^5$，且交集为$\{\mathbf{0}\}$（因为五个向量直无关），所以：
+$$\mathbb{R}^5 = C_M(\mathbf{e}_3) \oplus C_M(\mathbf{v}).$$
+\end{so}
+
+% 反之，从$b_k(\lambda)$可以唯一恢复出轨迹长度：
+
+% \begin{pp}\label{pp:6_13_3}
+% 序列$b_0(\lambda), b_1(\lambda), \cdots, b_{d_\lambda - 1}(\lambda)$唯一确定了轨迹长度$e_1 \geq e_2 \geq \cdots \geq e_p$。
+% \end{pp}
+% \begin{proof}
+% 轨迹长度恰好等于$j$的个数为：
+% $$ b_{j-1}(\lambda) - b_j(\lambda), $$
+% 其中约定$b_{d_\lambda}(\lambda) = 0$。
+% 这是因为$b_{j-1}$计算的是$e_i > j-1$（即$e_i \geq j$）的个数，
+% $b_j$计算的是$e_i > j$（即$e_i \geq j+1$）的个数，
+% 两者之差恰好是$e_i = j$的个数。
+% \end{proof}
 
 \subsection{标准形式}
 考察$N$限制在这个子空间上的部分在循环基上的矩阵：
@@ -3637,6 +4616,75 @@ $$
 其对角线元素可以不为0，不同的块里对角线元素可以是不同数值，第$i$行第$i-1$列值为0或1，其余位置都是0。
 幂零自同态的本征值是0，所以这里的标准形式和前面定义的是一致的。
 
+我们来把$B$和$C$化为标准形式。
+
+\paragraph{自同态$B$的标准形式}
+
+$B$的唯一本征值为$1$，极小归零式为$(z-1)^2$，全重数$\mu_a(1) = 2$。
+$N_B = B - \mathrm{I}$是$2$阶幂零，只有一条轨迹：
+$$
+(1,0) \;\longrightarrow\; (2,1) \;\longrightarrow\; \mathbf{0}.
+$$
+取轨迹基为$((2,1),\, (1,0))$（结束向量在前，出发向量在后）。
+在这组基上：
+$$
+B(2,1) = 1\cdot(2,1) + 0\cdot(1,0), \quad B(1,0) = 1\cdot(2,1) + 1\cdot(1,0).
+$$
+所以$B$在这组基上的矩阵为：
+$$
+[B] = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix} = J_2(1).
+$$
+这就是$B$的标准形式：一个$2\times 2$的单位标准形式，对应本征值$1$。
+
+\paragraph{自同态$C$的标准形式}
+
+$C$有两个本征值：$5$（全重数$1$）和$3$（全重数$2$）。
+极小归零式为$(z-3)^2(z-5)$。
+
+对本征值$5$：全本征空间$H_C(5) = \mathbb{R}(2,1,0)$是$1$维的。
+$C$在其上的限制就是乘以$5$。对应的单位标准形式为$J_1(5) = [5]$。
+
+对本征值$3$：全本征空间$H_C(3) = \Ker(C-3\mathrm{I})^2$是$2$维的。
+$N_C = C - 3\mathrm{I}$在其上是$2$阶幂零，轨迹为：
+$$
+(-1,0,2) \;\longrightarrow\; (0,3,0) \;\longrightarrow\; \mathbf{0}.
+$$
+取轨迹基为$((0,3,0),\, (-1,0,2))$。在这组基上：
+$$
+C(0,3,0) = 3\cdot(0,3,0) + 0\cdot(-1,0,2),
+$$
+$$
+C(-1,0,2) = 1\cdot(0,3,0) + 3\cdot(-1,0,2).
+$$
+验证第二个等式：$C(-1,0,2) = (5\cdot(-1)+0+2,\, 1\cdot(-1)+0+4,\, 0) = (-3, 3, 0)$。
+而$(0,3,0) + 3(-1,0,2) = (-3, 3, 0)$。成立。
+
+所以$C$在$H_C(3)$的这组基上的矩阵为：
+$$
+\begin{bmatrix} 3 & 1 \\ 0 & 3 \end{bmatrix} = J_2(3).
+$$
+
+综合两个本征值，取$\mathbb{R}^3$的基底为：
+$$
+\mathcal{B} = \big((0,3,0),\; (-1,0,2),\; (2,1,0)\big).
+$$
+前两个向量是$H_C(3)$的轨迹基，第三个是$H_C(5)$的基向量。
+$C$在这组基上的矩阵为分块对角矩阵：
+$$
+[C]_{\mathcal{B}} = \begin{bmatrix} 3 & 1 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & 5 \end{bmatrix} = J_2(3) \oplus J_1(5).
+$$
+这就是$C$的标准形式。
+
+\paragraph{自同态$A$的标准形式}
+
+$A$有两个不同的本征值$1$和$2$，各自全重数为$1$。
+$A$可对角化，标准形式就是对角矩阵：
+$$
+[A] = \begin{bmatrix} 1 & 0 \\ 0 & 2 \end{bmatrix} = J_1(1) \oplus J_1(2).
+$$
+每个单位标准形式都是$1\times 1$的，没有非对角的$1$。
+这对应极小归零式$(z-1)(z-2)$没有重根的事实。
+
 至此，我们对自同态在某个本征值相关的空间里的性质有了深刻的了解。给定本征值$\lambda$，我们可以找到一组基底，
 使得自同态在它对应的全本征空间里有唯一的形式。
 
@@ -3656,7 +4704,141 @@ $$ \mathbb{V} = \Ker (T - \lambda_1\mathrm{I})^{d_1} \oplus \Ker (T - \lambda_2\
 \begin{tm}
     如果自同态可约简为标准形式，那么它的迹就是它的本征值按照全重数相加的和。
 \end{tm}
-然而自同态的迹是它在任意基底下的矩阵的对角元素之和，因此必然在系数域里。因此我们可以猜想：本征值按照全重数相加的和总在原系数域里。这一点我们将在后面的章节继续讨论。
+然而自同态的迹是它在任意基底下的矩阵的对角元素之和，因此必然在系数域里。这说明，只要自同态可约简为标准形式，它的本征值按照全重数相加的和必然在系数域里。
+
+另外我们在证明命题\ref{pp:6_8}时定义过本征式：
+$$
+c_T(x) = \prod_{j=1}^n(x - a_{jj}).
+$$
+它是关于自同态矩阵的$n$次整式，是三角化后矩阵的对角元素对应的一次式的乘积。将自同态化为标准形式后，$c_T$就是所有本征值按照全重数对应的一次式的乘积：
+$$
+c_T(x) = \prod_{\lambda}(x - \lambda)^{\mu_{a}(\lambda)}.
+$$
+本征值的全重数大于等于其阶，因此$c_T$是$m_T$的倍式，从而是归零式。我们把这个结论称为\textbf{全本征归零定理}。
+\begin{tm}{\textbf{全本征归零定理}}
+    对可三角化的自同态$T$，有：
+    $$ c_T(T) = 0. $$
+\end{tm}
+
+
+\begin{et}\label{et:6_canonical}
+继续考虑上一题中的幂零自同态$M$：
+$$
+M = \begin{bmatrix}
+0 & 1 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix}.
+$$
+上一题中已经验证，$M$是$3$阶幂零自同态，有两条轨迹：
+\begin{align*}
+    \mathbf{e}_3 &\longrightarrow \mathbf{e}_2 \longrightarrow \mathbf{e}_1 \longrightarrow \mathbf{0},\\
+    \mathbf{f}_2 = (0,0,-1,0,1) &\longrightarrow \mathbf{f}_1 = (0,-1,0,1,0) \longrightarrow \mathbf{0}.
+\end{align*}
+\begin{enumerate}
+\item 取轨迹基：
+$$\mathcal{B} = \big(\mathbf{e}_1,\; \mathbf{e}_2,\; \mathbf{e}_3,\; \mathbf{f}_1,\; \mathbf{f}_2\big).$$
+逐一计算$M$作用在每个基向量上的结果，将其用$\mathcal{B}$分解，写出$M$在$\mathcal{B}$上的矩阵$[M]_{\mathcal{B}}$。
+\item 验证$[M]_{\mathcal{B}}$是$M$的标准形式，并指出它由哪些单位标准形式构成。
+\item 写出从标准基到$\mathcal{B}$的基变换矩阵$P$，并验证$P^{-1}MP = [M]_{\mathcal{B}}$。
+\item 写出$M$的极小归零式和本征式$c_M(x)$，验证$c_M(M) = 0$（即全本征归零定理在此例中成立）。
+\end{enumerate}
+\end{et}
+
+\begin{so}
+\textbf{(1)} 逐一计算$M$作用在$\mathcal{B}$中每个基向量上的结果。
+\begin{align*}
+    M\mathbf{e}_1 &= M(1,0,0,0,0) \phantom{-}= (0,0,0,0,0) \phantom{-}= 0\cdot\mathbf{e}_1 + 0\cdot\mathbf{e}_2 + 0\cdot\mathbf{e}_3 + 0\cdot\mathbf{f}_1 + 0\cdot\mathbf{f}_2.\\
+    M\mathbf{e}_2 &= M(0,1,0,0,0) \phantom{-}= (1,0,0,0,0) \phantom{-}= 1\cdot\mathbf{e}_1 + 0\cdot\mathbf{e}_2 + 0\cdot\mathbf{e}_3 + 0\cdot\mathbf{f}_1 + 0\cdot\mathbf{f}_2.\\
+    M\mathbf{e}_3 &= M(0,0,1,0,0) \phantom{-}= (0,1,0,0,0) \phantom{-}= 0\cdot\mathbf{e}_1 + 1\cdot\mathbf{e}_2 + 0\cdot\mathbf{e}_3 + 0\cdot\mathbf{f}_1 + 0\cdot\mathbf{f}_2.\\
+    M\mathbf{f}_1 &= M(0,-1,0,1,0) = (0,0,0,0,0) \phantom{-}= 0\cdot\mathbf{e}_1 + 0\cdot\mathbf{e}_2 + 0\cdot\mathbf{e}_3 + 0\cdot\mathbf{f}_1 + 0\cdot\mathbf{f}_2.\\
+    M\mathbf{f}_2 &= M(0,0,-1,0,1) = (0,-1,0,1,0) = 0\cdot\mathbf{e}_1 + 0\cdot\mathbf{e}_2 + 0\cdot\mathbf{e}_3 + 1\cdot\mathbf{f}_1 + 0\cdot\mathbf{f}_2.
+\end{align*}
+
+因此，$M$在$\mathcal{B}$上的矩阵为：
+$$
+[M]_{\mathcal{B}} = \begin{bmatrix}
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix}.
+$$
+
+\textbf{(2)} 上式可以写为分块对角形式：
+$$
+[M]_{\mathcal{B}} = \begin{bmatrix}
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+0 & 0 & 0
+\end{bmatrix} \oplus \begin{bmatrix}
+0 & 1 \\
+0 & 0
+\end{bmatrix} = J_3(0) \oplus J_2(0).
+$$
+这正是$M$的\textbf{标准形式}，由一个$3$阶单位标准形式$J_3(0)$和一个$2$阶单位标准形式$J_2(0)$构成。
+$J_3(0)$对应第一条轨迹（长度$3$），$J_2(0)$对应第二条轨迹（长度$2$）。
+
+\textbf{(3)} 基变换矩阵$P$的列为$\mathcal{B}$中各向量在标准基上的坐标：
+$$
+P = \begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & -1 & 0 \\
+0 & 0 & 1 & 0 & -1 \\
+0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 1
+\end{bmatrix}.
+$$
+$P$是上三角矩阵，对角线元素全为$1$，所以$P$可逆。其逆矩阵为：
+$$
+P^{-1} = \begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 & 1 \\
+0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 1
+\end{bmatrix}.
+$$
+（验证：$P$中$(2,4)$位置为$-1$，$(3,5)$位置为$-1$；$P^{-1}$中对应位置为$+1$，其余不变。读者可以直接计算$PP^{-1}=\mathrm{I}_5$确认。）
+
+下面验证$P^{-1}MP = [M]_{\mathcal{B}}$。首先计算$MP$：
+$$
+MP = \begin{bmatrix}
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & -1 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix}.
+$$
+
+再计算$P^{-1}(MP)$：
+$$
+P^{-1}MP = \begin{bmatrix}
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0
+\end{bmatrix} = [M]_{\mathcal{B}}. 
+$$
+
+\textbf{(4)} $M$是$3$阶幂零自同态，唯一本征值为$0$，全重数为$5$，阶为$3$。
+
+极小归零式为$m_M(x) = x^3$（次数等于最大轨迹长度$e_1 = 3$）。
+
+本征式为所有本征值按全重数对应的一次式的乘积：
+$$c_M(x) = (x - 0)^5 = x^5.$$
+
+验证全本征归零定理：$m_M(x) = x^3$确实是$c_M(x) = x^5$的因式，$c_M(M) = M^5$。由于$M^3 = 0$，
+$$M^5 = M^3 \cdot M^2 = 0 \cdot M^2 = 0.$$
+所以$c_M(M) = 0$，全本征归零定理成立。
+
+另外可以验证$M$的效为$\det(M) = 0$（等于所有本征值按全重数的乘积$0^5 = 0$），迹为$\mathrm{tr}(M) = 0$（等于所有本征值按全重数的和$0 \times 5 = 0$）。
+\end{so}
 
 \chapter{自同态的效}
 以上各章中，我们对有限维空间中自同态的性质进行了初步探讨，将一般自同态表示成更简单、更好理解的形式。我们使用矩阵来记录自同态在特定基底上的形态。有了矩阵，我们可以量化地讨论自同态的性质。通过讨论自同态的本征值和本征向量，我们证明了在某些特定基底上，自同态能够用形式比较简单的矩阵表示。本章我们探讨自同态的另一个重要本征量。
@@ -3966,7 +5148,7 @@ $$
 $$
 并将$\mathcal{B}$映射到域的乘法单位元$1_{\mathbb{F}}$的共轴退化$n$重直型。其中$u_{i,j}$是$\mathbf{u}_j$在$\mathbb{B}$中的第$i$个坐标分量。
 
-矩阵$M = (u_{i,j})$的效是其列向量组在$\mathbb{F}^n$标准基底下的效：
+矩阵$M = [u_{i,j}]_{1\leqslant i,j\leqslant n}$的效是其列向量组在$\mathbb{F}^n$标准基底下的效：
 $$
 \det(M) = \sum_{\sigma\in\mathfrak{S}_n} \mathfrak{s}(\sigma) \prod_{i=1}^n u_{\sigma(i),i}.
 $$
@@ -4280,32 +5462,32 @@ $$
 
 我们在自同态约简一章中证明了，$\mathbb{C}$平直空间中的自同态总可以三角化。于是，只要平直空间的系数域是$\mathbb{C}$的子域，比如$\mathbf{\mathbb{R}}$，总可以将其中自同态三角化，然后求其对角线元素的乘积。于是，对于实平直空间中的矩阵或自同态，我们可以将它看作复平直空间中的矩阵或自同态，将其三角化，然后求其对角线元素的乘积，就得到自同态的效。
 
-\subsection{全本征归零定理}
-给定自同态$T$，我们还可以定义以下的整式：
+\subsection{用效表示本征式}
+给定自同态$T$，考察以下的整式：
 $$
-c_T(x) = \det(x \mathrm{I} - T).
+\det(x \mathrm{I} - T).
 $$
-它叫做$T$的\textbf{本征式}。它是$x \mathrm{I} - T$在任意基底上的矩阵的效。注意这个整式不依赖基底的选择，我们可以任选一个基底，计算其矩阵：
+它是$x \mathrm{I} - T$在任意基底上的矩阵的效。注意这个整式不依赖基底的选择，我们可以任选一个基底，计算其矩阵的效：
 \begin{align*}
-    c_T(x) = \det([x \mathrm{I} - T]_{\mathcal{B}}) = \det(x\mathrm{I}_n - [T]_{\mathcal{B}}).
+    \det(x \mathrm{I} - T) = \det([x \mathrm{I} - T]_{\mathcal{B}}) = \det(x\mathrm{I}_n - [T]_{\mathcal{B}}).
 \end{align*}
-不定元$x$恰好在矩阵$x\mathrm{I}_n - [T]_{\mathcal{B}}$的对角线上出现。具体来说，它的对角线上是$n$个一次式：$x - t_{1,1}, x - t_{2,2}, \cdot, t_{n, n}$。因此，考虑效的表达式中各项里$x$的次数。当$\sigma$是恒等变换时，$\prod_{i=1}^n (x - t_{\sigma(i),i})$是关于$x$的首一$n$次整式。对于其他的$\sigma$，对应项里的$x - t_{i,i}$出现次数都小于$n$，因此作为整式的次数小于$n$。因此，将所有项加起来，仍然是一个关于$x$的首一$n$次整式。也就是说，对于一般矩阵，$c_T$是一个关于其元素的$n$次整式。
+不定元$x$恰好在矩阵$x\mathrm{I}_n - [T]_{\mathcal{B}}$的对角线上出现。具体来说，它的对角线上是$n$个一次式：$x - t_{1,1}, x - t_{2,2}, \cdot, t_{n, n}$。因此，考虑效的表达式中各项里$x$的次数。当$\sigma$是恒等变换时，$\prod_{i=1}^n (x - t_{\sigma(i),i})$是关于$x$的首一$n$次整式。对于其他的$\sigma$，对应项里的$x - t_{i,i}$出现次数都小于$n$，因此作为整式的次数小于$n$。因此，将所有项加起来，仍然是一个关于$x$的首一$n$次整式。也就是说，对于一般矩阵，$\det(x \mathrm{I} - T)$是一个关于其元素的$n$次整式。
 
-如果$T$在某个基底上是三角矩阵或对角矩阵，那么$c_T$就是矩阵$x\mathrm{I}_n - [T]$的对角线元素的乘积。也就是：
+如果$T$在某个基底上是三角矩阵或对角矩阵，那么$\det(x \mathrm{I} - T)$就是矩阵$x\mathrm{I}_n - [T]$的对角线元素的乘积。也就是：
 $$
-c_T(x) = \prod_{i=1}^n (x - t_{i,i}).
+\det(x \mathrm{I} - T) = \prod_{i=1}^n (x - t_{i,i}).
 $$
-而我们已经证明了，对于可三角化矩阵，我们可以将其化为标准形式，于是它的对角线元素就是它的本征值按照全重数排列。于是，$c_T$可以写成$n$个关于$T$的本征值的一次式的乘积：
+也就是说，$\det(x \mathrm{I} - T)$就是我们已经定义过的\textbf{本征式}$c_T$。我们已经证明了，对于可三角化矩阵，我们可以将其化为标准形式，于是它的对角线元素就是它的本征值按照全重数排列。于是，$c_T$可以写成$n$个关于$T$的本征值的一次式的乘积：
 $$
-c_T = \prod (x - \lambda_i)^{\mu_a(\lambda_i)}
+\det(x \mathrm{I} - T) = c_T = \prod_{\lambda} (x - \lambda)^{\mu_a(\lambda)}
 $$
-其中$\lambda_i$是不同的本征值，而$\mu_a(i)$是其全重数。全重数是全本征空间的维数，因而大于等于其本重数，因此，$c_T$必然是$m_T$的倍式，从而是归零式。这个结论称为全本征归零定理。
-\begin{tm}{\textbf{全本征归零定理}}
-    对可三角化的自同态$T$，有：
-    $$ c_T(T) = 0. $$
-\end{tm}
-
-全本征归零定理给出了一个计算可三角化的直自同态$T$的本征值的算法：找到$T$在任意基底上的矩阵，然后计算上面给出的矩阵的效，得到本征式$c_T$。$c_T$的根就是本征值。实自同态或其他非复数域平直空间上的自同态，不一定可三角化，但我们在后续的章节中会证明，即便自同态$T$无法三角化，也有$c_T(T) = 0$成立。
+其中$\lambda_i$是不同的本征值，而$\mu_a(i)$是其全重数。
+另一方面，$\det(x \mathrm{I} - T)$不依赖于基底。因此，对于实系数空间的自同态，即便它作为实自同态无法三角化，我们可以考虑它作为复自同态。复自同态总可以三角化。于是可以写出
+$$c_T = \prod_{\lambda} (x - \lambda)^{\mu_a(\lambda)}.$$
+其中的本征值$\lambda$是复数。但$T$又能写成实系数矩阵，于是$\det(x \mathrm{I} - T)$可以是实系数整式。也就是说，我们可以得到复系数整式和实系数整式的等式：
+$$ \prod_{\lambda} (x - \lambda)^{\mu_a(\lambda)} = \det(x \mathrm{I} - T) $$
+这能让我们获取很多信息。比如，作为复自同态，我们知道$c_T(T) = 0$。但既然$c_T$是实系数整式，那么对于任何实向量，显然也有$c_T(T) = 0$。这说明只要按照以上方法用效定义$c_T$，全本征归零定理对实自同态也成立。
+又比如，令$x = 0$，就得到$\det(T) = \prod_{\lambda}^{\mu_a(\lambda)}$，也就是说，实自同态的效是它在复空间中的本征值按全重数的乘积。即便这时的本征值是复数，它们按全重数的乘积是实数。这个结论我们会在后面再详细讨论。
 
 \subsection{按行列展开效}
 另一种计算效的方法是所谓的效的按行（列）展开。
@@ -4429,7 +5611,7 @@ $$
 
 以上讨论中我们建立了矩阵的余子阵$A_{i,j}^{\times}$的概念。它可以看作关于位置信息$(i,j)$的映射。我们可以把这个概念推广：
 \begin{df}
-    给定$m\times n$的矩阵$A = (a_{i,j})$和正整数$p< m, \;q< n$。设有严格递增下标数组$I=(i_1,i_2,\cdots,i_p)$、$J=(j_1,j_2,\cdots,j_q)$\footnote{即是说$1\leqslant i_1<i_2<\cdots<i_p\leqslant m$、$1\leqslant j_1<j_2<\cdots<j_q\leqslant n$。}，则我们可以定义矩阵关于行号$i_1,i_2,\cdots,i_p$和$j_1,j_2,\cdots,j_q$的\textbf{子阵}$A_{I,J}$和它的\textbf{余子阵}$A_{I,J}^{\times}$。$A_{I,J}$是$I,J$中的行号、列号对应的行列交叉的部分取出来组成的$p\times q$矩阵。$A_{I,J}^{\times}$是把$A$的相关行号、列号的行列移除后剩下的$(m-p)\times(n-q)$矩阵。
+    给定$m\times n$的矩阵$A = [a_{i,j}]_{1\leqslant i\leqslant m,1\leqslant j\leqslant n}$和正整数$p< m, \;q< n$。设有严格递增下标数组$I=(i_1,i_2,\cdots,i_p)$、$J=(j_1,j_2,\cdots,j_q)$\footnote{即是说$1\leqslant i_1<i_2<\cdots<i_p\leqslant m$、$1\leqslant j_1<j_2<\cdots<j_q\leqslant n$。}，则我们可以定义矩阵关于行号$i_1,i_2,\cdots,i_p$和$j_1,j_2,\cdots,j_q$的\textbf{子阵}$A_{I,J}$和它的\textbf{余子阵}$A_{I,J}^{\times}$。$A_{I,J}$是$I,J$中的行号、列号对应的行列交叉的部分取出来组成的$p\times q$矩阵。$A_{I,J}^{\times}$是把$A$的相关行号、列号的行列移除后剩下的$(m-p)\times(n-q)$矩阵。
 \end{df}
 这个定义在符号和记录方法上很繁琐，但意思很好理解，就是把删一行一列改为删多行多列。这样的子阵和余子阵可以用来定义分块矩阵。给定$m\times n$矩阵，首先指定正整数$p< m, \;q< n$，我们可以按照$p,q$来给$A$分块。指定$I=\hin{1}{p}$、$J=\hin{1}{q}$，那么子阵$A_{I,J}$就是$A$的前$p$行$q$列的元素构成的矩阵（左上角部分），而$A_{I,J}^{\times}$就是后$(m-p)$行$(n-q)$列的元素构成的矩阵（右下角部分）。同理，指定$I'=\hin{p+1}{n}$、$J=\hin{1}{q}$，那么我们可以得到$A$的后$(m-p)$行前$q$列的元素构成的矩阵（左下角部分）和前$p$行后$(n-q)$列的元素构成的矩阵（右上角部分）。可以说我们在第$p$行、第$q$列后把矩阵$A$切成四块，那么就得到四个子阵。它们两两成对，互为余子阵。我们可以把$A$写成：
 $$
@@ -4447,7 +5629,7 @@ $$
 $$
 其中$A_{k,i}^{\times}$的元素都不在第$i$列。如果把公式中的$a_{k,i}$替换成别的$n$个数，就等于把矩阵的第$i$列换掉以后，再按第$i$列展开，计算其效。那么，如果把公式中的$a_{k,i}$替换成$a_{k,j}$，即另一列，会怎么样呢？由于第$i$列被替换成第$j$列，所以只要$j\neq i$，矩阵就有两列一模一样。按照效的基本性质，这时候矩阵的效等于零。
 
-于是我们可以设计这样一个矩阵$\co(A) = (c_{i,j})$，它和$A$一样也是$n\times n$矩阵，它的第$i$行第$j$列的元素是：
+于是我们可以设计这样一个矩阵$\co(A) = [c_{i,j}]_{1\leqslant i,j\leqslant n}$，它和$A$一样也是$n\times n$矩阵，它的第$i$行第$j$列的元素是：
 $$
 c_{i,j} = (-1)^{j+i} \det(A_{j,i}^{\times})
 $$
@@ -5881,7 +7063,7 @@ A = \begin{bmatrix}\e^{\imath \alpha} & 0 \\ 0 & -\e^{\imath \beta} \end{bmatrix
 \section{规范自同态}
 \subsection{可幺正对角化的矩阵}
 复内积空间中的自伴自同态可以幺正对角化，在由它的本征向量构成的幺正基上，它的矩阵是对角矩阵。
-不仅如此，由于它的特征值都是实数，对角矩阵的对角元素都是实数。
+不仅如此，由于它的本征值都是实数，对角矩阵的对角元素都是实数。
 我们希望把这个性质扩展到更广泛的一类自同态上。
 我们希望把内积空间的自伴自同态的性质扩展到更广泛的一类自同态上。
 \begin{df}\label{df:8_3}
@@ -6243,7 +7425,7 @@ $$ ax^2 + cy^2,$$
 $$ \mathfrak{q}:\;\; (x_1, x_2, \cdots, x_n) \; \mapsto \; \sum_{i=1}^n \sum_{j=1}^n a_{i,j} x_i x_j, $$
 我们可以将其表示为：
 $$ \mathbf{x} \; \mapsto \; [\mathbf{x}]^{\tr} A [\mathbf{x}]. $$
-其中$A = (a_{i,j})$是$n\times n$方阵。注意到我们可以把二次型写成
+其中$A = [a_{i,j}]_{1\leqslant i,j\leqslant n}$是$n\times n$方阵。注意到我们可以把二次型写成
 $$ (x_1, x_2, \cdots, x_n) \; \mapsto \; \sum_{i=1}^n \sum_{j=1}^n \frac{a_{i,j} + a_{j,i}}{2} x_i x_j, $$
 这不改变二次型的结果，而$x_i x_j$的系数等于$x_j x_i$的系数（或者说合并同类项后，我们重新分配了系数）。这说明我们可以假设矩阵$A$总是关于对角线对称的。
 
@@ -7007,7 +8189,7 @@ $$ \sum_j \mu_a(j) \deg p_j = n . $$
 \begin{df}\label{df:9_5}
     给定域$\mathbb{F}$上的$n$维平直空间$\mathbb{V}$以及其中自同态$T$，它的极小归零式对应分裂域$\mathbb{K}$。
     设$T$到$\mathbb{K}$的延拓为$T^{\mathbb{K}}$。则从$T^{\mathbb{K}}$三角化后矩阵的对角线元素$\lambda_1, \cdots , \lambda_n$可构造整式：
-    $$ c_T = \prod_{i=1}^n (x - \lambda_i).$$
+    $$ c_T = \prod_{i=1}^n (x - \lambda_i) = \prod_{\lambda} (x - \lambda)^{\mu_a(\lambda)}.$$
     $c_T$称为$T$的\textbf{本征式}。
 \end{df}
 以上定义中，$c_T$似乎依赖于$\mathbb{K}$，它的系数在$\mathbb{K}$中。但我们可以证明：$c_T$的系数在$\mathbb{F}$中。
@@ -7017,7 +8199,7 @@ $$ \sum_j \mu_a(j) \deg p_j = n . $$
 $$
 c_T = \det(x\mathrm{I} - T).
 $$
-自同态可三角化的时候，我们知道两种定义是等价的。现在，我们通过把自同态延拓到分裂域，就能让它可三角化。于是，在分裂域中，我们有
+自同态可三角化的时候，我们知道两种定义是等价的。现在，我们通过把自同态延拓到分裂域，就能让$T$可三角化。于是，在分裂域中，我们有
 $$
 c_T = \prod_{i=1}^n (x - \lambda_i) = \det(x\mathrm{I} - T).
 $$
@@ -7049,13 +8231,8 @@ $$
     $p_j$是系数在$\mathbb{F}$中的整式，所以$c_T$也是系数在$\mathbb{F}$中的整式。\\
 \end{proof}
 
-既然$c_T$可以按照可三角化的情形定义，那么我们就可以把相关的结论推广到一般的情形。比如，$c_T$中每个本征值对应的一次式的重数是全重数：
-$$
-c_T = \prod_{\lambda} (x - \lambda)^{\mu_a(\lambda)}
-$$
-而本重数小于等于全重数，因此极小归零式是本征式的因式。
-因此，$c_T(T) = 0$。这个结论就是一般情况的\textbf{全本征归零定理}。
-\begin{tm}{全本征归零定理}
+既然$c_T$总可以按照可三角化的情形定义，那么一般情况的\textbf{全本征归零定理}对任何系数域空间上的自同态都成立。
+\begin{tm}{\textbf{全本征归零定理}}
     对一般域上的自同态$T$，定义$c_T = \det(x\mathrm{I} - T)$，则有：
     $$ c_T(T) = 0.$$
 \end{tm}
